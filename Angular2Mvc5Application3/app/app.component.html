@@ -1,0 +1,26 @@
+<div class="ui text container">
+<div class="ui segment form" >
+<div class="row"> 
+<div class="col-xs-9 col-sm-9">
+  <div class="input-group">
+      <input type="text" class="form-control" #newComment>
+      <span class="input-group-btn">
+        <button class="btn btn-default" (click)="addComent(newComment)" type="button">{{title}}</button>
+      </span>
+  </div>
+  <div class="ui rased segament">
+<div class="panel panel-default" *ngIf="comments.length > 0">
+    <div class="comment item" *ngFor = "let comment of comments">
+  <div class="panel-body">
+      <label>
+          {{comment}}
+      </label>
+  </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+

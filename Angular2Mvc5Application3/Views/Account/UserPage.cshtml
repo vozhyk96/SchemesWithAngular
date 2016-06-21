@@ -1,0 +1,134 @@
+﻿@model Schemes.ViewUser
+@{
+    ViewBag.Title = "Страница пользователя";
+}
+
+
+<div align ="center"><h2>@ViewBag.Title.</h2></div>
+<style>
+    .col {
+        width: 700px; /* Ширина блока */
+        padding: 10px; /* Поля */
+        word-wrap: break-word;
+    }
+</style> 
+            <div class="row">
+    <div class="col-sm-8">
+
+        @if (Model.picture.Image != null)
+        {
+            <td>
+                @Html.Raw(Model.picture.HtmlRaw
+                        + Convert.ToBase64String(Model.picture.Image) + "\" />")
+            </td>
+        }
+        @using (Html.BeginForm("Create", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <input type="hidden" name="modelId" value=@Model.id />
+            @Html.ValidationSummary(true)
+            <fieldset>
+                <div class="editor-label">Аватарка пользователя</div>
+                @if (Model.isUser)
+                {
+                    <div class="editor-field">
+                        <input type="file" name="uploadImage" class="btn btn-default" />
+                    </div>
+
+                                <p>
+                                    <div class="form-group">
+                                        <div class="col-md-offset-2 col-md-10">
+                                            <input type="submit" value="Добавить" class="btn btn-default" />
+                                        </div>
+                                    </div>
+
+                                </p>
+                }
+            </fieldset>
+        }
+    </div>
+    <div class="col-sm-4">
+        <p class="text-success">@ViewBag.StatusMessage</p>
+        <div>
+            <h4>Личая информация</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>Пароль:</dt>
+                <dd>
+                    [
+                    @if (Model.HasPassword)
+                    {
+                        @Html.ActionLink("Смена пароля", "ChangePassword", "Manage")
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Создать", "SetPassword", "Manage")
+                    }
+                    ]
+                </dd>
+                <dt>Фамилия:</dt>
+                <dd>
+                    @Model.surname
+                </dd>
+                <dt>Имя:</dt>
+                <dd>
+                    @Model.name
+                </dd>
+                <dt>Отчество:</dt>
+                <dd>
+                    @Model.patronymic
+                </dd>
+            </dl>
+            @if (Model.isUser)
+            {
+                using (Html.BeginForm("ChangeData", "Account", FormMethod.Get))
+                {
+                    <input type="hidden" name="modelId" value=@Model.id />
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input id="ButtonChange" type="submit" class="btn btn-default" value="Изменить ФИО" />
+                        </div>
+                    </div>
+                }
+            }
+            <br>
+            <br>
+            <br>
+        </div>
+    </div>
+
+</div>
+
+<div align="center"><h2>Посты пользоателя</h2></div>
+
+
+    @foreach (ViewPost post in Model.posts)
+    { <br>
+                <div class="thumbnail">
+                    <div class="col">
+                        <dl class="dl-horizontal">
+                            <dd>
+                                <h3>  @Html.ActionLink(post.post.title, "PostPage", "Post", new { id = post.post.id }, null)  </h3>
+                            </dd>
+                            <dd>
+                                Автор:  @post.UserEmail
+                            </dd>
+                            <dd>
+                                @post.post.tags
+                            </dd>
+                            <dd>
+                                @post.post.description
+                            </dd>
+                            <div align="right">
+                                <dd>
+                                    @post.post.time
+                                </dd>
+                            </div>
+                        </dl>
+                    </div>
+                </div>
+    }
+
+
+
+
+

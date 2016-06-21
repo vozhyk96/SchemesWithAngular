@@ -1,0 +1,29 @@
+﻿@using Schemes
+@model List<Schemes.ViewPost>
+@foreach (ViewPost post in Model)
+{
+    <br>
+    <div class="thumbnail">
+        <div class="col">
+            <dl class="dl-horizontal">
+                <dd>
+                    <h3>  @Html.ActionLink(post.post.title, "PostPage", "Post", new { id = post.post.id }, null)  </h3>
+                </dd>
+                <dd>
+                    Автор:  @post.UserEmail
+                </dd>
+                <dd>
+                    @post.post.tags
+                </dd>
+                <dd>
+                    @post.post.description
+                </dd>
+                <div align="right">
+                    <dd>
+                        @post.post.time
+                    </dd>
+                </div>
+            </dl>
+        </div>
+    </div>
+}
