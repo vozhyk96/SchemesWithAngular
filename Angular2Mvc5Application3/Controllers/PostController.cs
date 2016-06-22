@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using System.Data.Entity;
 
 namespace Schemes.Controllers
 {
@@ -18,13 +19,13 @@ namespace Schemes.Controllers
             {
                 post.UserId = UserId;
             }
-            if(UserId == null)
+            if (UserId == null)
             {
                 post = Repository.GetPostById(id);
             }
             return View(post);
         }
-        
+
         [HttpPost]
         public ActionResult CreatePost(Post model)
         {
@@ -39,10 +40,10 @@ namespace Schemes.Controllers
                 Repository.UpdatePost(model);
                 id = model.id;
             }
-            return RedirectToAction("PostPage", "Post", new { id = id});
+            return RedirectToAction("PostPage", "Post", new { id = id });
         }
 
-        
+
         public ActionResult PostPage(int id)
         {
             Post post = new Post();
@@ -52,16 +53,8 @@ namespace Schemes.Controllers
                 return RedirectToAction("Index", "Home");
             }
             ViewPost model = new ViewPost(post);
-            HttpCookie cookieTitle = new HttpCookie("Title");//Создаем объект
-            cookieTitle.Value = "Send";
-            HttpCookie cookieComment1 = new HttpCookie("Comment1");//Создаем объект
-            cookieComment1.Value = "Первый нах!!!1!";
-            HttpCookie cookieComment2 = new HttpCookie("Comment2");//Создаем объект
-            cookieComment2.Value = "Андрон пидор азазза";
-            Response.Cookies.Add(cookieTitle);
-            Response.Cookies.Add(cookieComment1);
-            Response.Cookies.Add(cookieComment2);
             return View(model);
         }
+   
     }
 }

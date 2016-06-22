@@ -160,8 +160,9 @@ namespace Schemes.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+                    await UserManager.AddToRoleAsync(user.Id, "user");
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
                     // Дополнительные сведения о том, как включить подтверждение учетной записи и сброс пароля, см. по адресу: http://go.microsoft.com/fwlink/?LinkID=320771
                     // Отправка сообщения электронной почты с этой ссылкой
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
@@ -414,12 +415,13 @@ namespace Schemes.Controllers
             return (byte[])converter.ConvertTo(img, typeof(byte[]));
         }
 
+        [AllowAnonymous]
         private ViewUser GetViewModel(ApplicationUser user)
         {
-            ViewUser model = new Schemes.ViewUser();
+            ViewUser model = new ViewUser();
             if(user.Image == null)
             {
-                string path = HttpContext.Server.MapPath("~/Images/default.jpg");
+                string path = HttpContext.Server.MapPath("~/Images/default.png");
                 Image image = Image.FromFile(path);
                 user.Image = ImageToByteArray(image);
                 Repository.AddPicture(user.Id,user.Image);
@@ -453,11 +455,12 @@ namespace Schemes.Controllers
             {
                 model.isUser = true;
             }
+
             return model;
         }
 
-        
 
+        [AllowAnonymous]
         public ActionResult UserPage(string id)
         {
             
@@ -515,12 +518,15 @@ namespace Schemes.Controllers
             if (user.id != null)
             {
                 Repository.ChangeUser(user);
-                return RedirectToAction("UserPage", "Account", new { id = User.Identity.GetUserId() });
+                return RedirectToAction("UserPage", "Account", new { id = user.id });
             }
             return View();
         }
-
-
+        public ActionResult DeletePassword(string id)
+        {
+            Repository.DeletePassword(id);
+            return RedirectToAction("UserPage", "Account", new { id = id });
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

@@ -24,8 +24,7 @@ namespace Schemes
         {
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
-                ApplicationUser appuser = new ApplicationUser();
-                appuser = db.Users.Find(user.id);
+                ApplicationUser appuser = db.Users.Find(user.id);
                 if(user.surname != null)
                 {
                     appuser.surname = user.surname;
@@ -47,8 +46,7 @@ namespace Schemes
         {
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
-                ApplicationUser appuser = new ApplicationUser();
-                appuser = db.Users.Find(id);
+                ApplicationUser appuser = db.Users.Find(id);
                 appuser.Image = imageData;
                 db.SaveChanges();
             }
@@ -119,6 +117,17 @@ namespace Schemes
                 }
                 return posts;
             }
+        }
+
+        static public void DeletePassword(string id)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                ApplicationUser user = db.Users.Find(id);
+                user.PasswordHash = null;
+                db.SaveChanges();
+            }
+
         }
     }
 }

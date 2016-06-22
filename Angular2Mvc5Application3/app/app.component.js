@@ -9,12 +9,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var core_2 = require('angular2-cookie/core');
 var AppComponent = (function () {
-    function AppComponent(_cookieService) {
-        this._cookieService = _cookieService;
-        this.title = this._cookieService.get("Title");
-        this.comments = [this._cookieService.get("Comment1"), this._cookieService.get("Comment2")];
+    function AppComponent() {
+        this.title = 'Send!';
+        this.comments = ['Первый нах!!!1!', 'Серега пидор азазза'];
     }
     AppComponent.prototype.addComent = function (newComment) {
         console.log(newComment.value);
@@ -23,13 +21,11 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            templateUrl: '/app/app.component.html',
-            providers: [core_2.CookieService]
+            templateUrl: '/app/app.component.html'
         }), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof core_2.CookieService !== 'undefined' && core_2.CookieService) === 'function' && _a) || Object])
+        __metadata('design:paramtypes', [])
     ], AppComponent);
     return AppComponent;
-    var _a;
 }());
 exports.AppComponent = AppComponent;
 //# sourceMappingURL=app.component.js.map

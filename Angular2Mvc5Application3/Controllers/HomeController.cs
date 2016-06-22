@@ -25,8 +25,9 @@ namespace Schemes.Controllers
         {
             var itemsToSkip = page * pageSize;
 
-            return posts.OrderBy(t => t.UserEmail).Skip(itemsToSkip).
+            return posts.OrderByDescending(t => t.post.time).Skip(itemsToSkip).
                 Take(pageSize).ToList();
         }
+
     }
 }

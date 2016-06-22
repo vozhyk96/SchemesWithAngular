@@ -10,7 +10,7 @@
                     <h3>  @Html.ActionLink(post.post.title, "PostPage", "Post", new { id = post.post.id }, null)  </h3>
                 </dd>
                 <dd>
-                    Автор:  @post.UserEmail
+                    Автор:  @Html.ActionLink(post.UserEmail, "UserPage", "Account", new { id = post.post.UserId }, null)
                 </dd>
                 <dd>
                     @post.post.tags

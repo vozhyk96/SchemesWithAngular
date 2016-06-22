@@ -1,24 +1,18 @@
 import {Component} from '@angular/core';
-import {CookieService} from 'angular2-cookie/core';
 
 @Component({
     selector: 'my-app',
-    templateUrl: '/app/app.component.html',
-    providers: [CookieService]
+    templateUrl: '/app/app.component.html'
 })
 export class AppComponent {
-    title: string;
-    comments: string[];
-
-    constructor(private _cookieService: CookieService) {
-
-        this.title = this._cookieService.get("Title");
-        this.comments = [this._cookieService.get("Comment1"), this._cookieService.get("Comment2")];
+    title : string;
+    comments : string[];
+    constructor(){
+        this.title = 'Send!';
+        this.comments = ['Первый нах!!!1!','Серега пидор азазза'];
     }
-    addComent(newComment: HTMLInputElement) {
+    addComent(newComment: HTMLInputElement){
         console.log(newComment.value);
         this.comments.push(newComment.value);
     }
-
-
-}
+ }
