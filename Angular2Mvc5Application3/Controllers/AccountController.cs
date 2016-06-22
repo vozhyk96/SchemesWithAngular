@@ -527,6 +527,12 @@ namespace Schemes.Controllers
             Repository.DeletePassword(id);
             return RedirectToAction("UserPage", "Account", new { id = id });
         }
+
+        public ActionResult Delete(string id)
+        {
+            Repository.DeleteImage(id);
+            return RedirectToAction("UserPage", "Account", new { id = id });
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

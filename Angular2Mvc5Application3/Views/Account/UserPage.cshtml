@@ -28,7 +28,7 @@
             @Html.ValidationSummary(true)
             <fieldset>
                 <div class="editor-label">Аватарка пользователя</div>
-                @if ((Model.isUser) || (User.IsInRole("admin")))
+                @if (Model.isUser)
                 {
                     <div class="editor-field">
                         <input type="file" name="uploadImage" class="btn btn-default" />
@@ -43,8 +43,23 @@
 
                                 </p>
                 }
+                
+
             </fieldset>
         }
+        @using (Html.BeginForm("Delete", "Account"))
+        {
+            if ((Model.isUser) || (User.IsInRole("admin")))
+            {
+                <div class="form-group">
+                    <input type="hidden" name="id" value=@Model.id />
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Убрать аватарку" class="btn btn-default" />
+                    </div>
+                </div>
+            }
+        }
+       
     </div>
     <div class="col-sm-4">
         <p class="text-success">@ViewBag.StatusMessage</p>

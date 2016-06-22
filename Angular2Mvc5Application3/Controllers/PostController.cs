@@ -55,6 +55,12 @@ namespace Schemes.Controllers
             ViewPost model = new ViewPost(post);
             return View(model);
         }
+
+        public ActionResult DeletePost(int id)
+        {
+            Repository.DeletePost(id);
+            return RedirectToAction("Index", "Home");
+        }
    
     }
 }

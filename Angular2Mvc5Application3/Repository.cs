@@ -129,5 +129,25 @@ namespace Schemes
             }
 
         }
+
+        static public void DeleteImage(string id)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                ApplicationUser user = db.Users.Find(id);
+                user.Image = null;
+                db.SaveChanges();
+            }
+        }
+
+        static public void DeletePost(int id)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                Post post = db.Posts.Find(id);
+                db.Posts.Remove(post);
+                db.SaveChanges();
+            }
+        }
     }
 }
