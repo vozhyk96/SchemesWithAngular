@@ -19,7 +19,15 @@
 <body>
     </br>
     </br>
-
+    @using (Html.BeginForm("Index", "Home"))
+    {
+        <div class="form-group">
+            <input type="text" name="s" class="text-right"/>
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Найти" class="btn btn-default" />
+            </div>
+        </div>
+    }
     <div id="scrolList">
         @Html.Partial("Tape")
     </div>

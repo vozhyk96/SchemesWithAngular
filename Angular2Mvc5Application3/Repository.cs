@@ -63,6 +63,8 @@ namespace Schemes
             }
         }
 
+        
+
         static public void UpdatePost(Post post)
         {
             using (ApplicationDbContext db = new ApplicationDbContext())
@@ -149,5 +151,23 @@ namespace Schemes
                 db.SaveChanges();
             }
         }
+
+        static public List<ViewPost> FindPostsWithString(string s)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                List<ViewPost> posts = new List<ViewPost>();
+                foreach (Post post in db.Posts)
+                {
+                    ViewPost vpost = new ViewPost(post);
+                    if((post.title.Contains(s))||(post.teme.Contains(s))||(post.tags.Contains(s)||(post.description.Contains(s)||(post.time.ToString().Contains(s))||(vpost.UserEmail.Contains(s)))))
+                    {
+                        posts.Add(new ViewPost(post));
+                    }
+                }
+                return posts;
+            }
+        }
+
     }
 }
