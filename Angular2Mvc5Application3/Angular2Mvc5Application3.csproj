@@ -239,8 +239,22 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="LuceneRepository.cs" />
+    <Compile Include="Migrations\201606211143266_InitialCreate.cs" />
+    <Compile Include="Migrations\201606211143266_InitialCreate.Designer.cs">
+      <DependentUpon>201606211143266_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606241405031_m1.cs" />
+    <Compile Include="Migrations\201606241405031_m1.Designer.cs">
+      <DependentUpon>201606241405031_m1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606241408358_m2.cs" />
+    <Compile Include="Migrations\201606241408358_m2.Designer.cs">
+      <DependentUpon>201606241408358_m2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AppDbInitializer.cs" />
+    <Compile Include="Models\DbModels\Temp.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
@@ -263,36 +277,59 @@
     <Content Include="App_Data\aspnet-WebApplication3-20160609082042_log.ldf">
       <DependentUpon>aspnet-WebApplication3-20160609082042.mdf</DependentUpon>
     </Content>
-    <Content Include="bin\Antlr3.Runtime.dll" />
-    <Content Include="bin\EntityFramework.dll" />
-    <Content Include="bin\EntityFramework.SqlServer.dll" />
-    <Content Include="bin\Microsoft.AI.Agent.Intercept.dll" />
-    <Content Include="bin\Microsoft.AI.DependencyCollector.dll" />
-    <Content Include="bin\Microsoft.AI.PerfCounterCollector.dll" />
-    <Content Include="bin\Microsoft.AI.ServerTelemetryChannel.dll" />
-    <Content Include="bin\Microsoft.AI.Web.dll" />
-    <Content Include="bin\Microsoft.AI.WindowsServer.dll" />
-    <Content Include="bin\Microsoft.ApplicationInsights.dll" />
-    <Content Include="bin\Microsoft.AspNet.Identity.Core.dll" />
-    <Content Include="bin\Microsoft.AspNet.Identity.EntityFramework.dll" />
-    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" />
-    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml" />
-    <Content Include="bin\Microsoft.Web.Infrastructure.dll" />
-    <Content Include="bin\Newtonsoft.Json.dll" />
-    <Content Include="bin\Owin.dll" />
-    <Content Include="bin\System.Web.Helpers.dll" />
-    <Content Include="bin\System.Web.Mvc.dll" />
-    <Content Include="bin\System.Web.Optimization.dll" />
-    <Content Include="bin\System.Web.Razor.dll" />
-    <Content Include="bin\System.Web.WebPages.Deployment.dll" />
-    <Content Include="bin\System.Web.WebPages.dll" />
-    <Content Include="bin\System.Web.WebPages.Razor.dll" />
-    <Content Include="bin\TypeLite.dll" />
-    <Content Include="bin\TypeLite.Net4.dll" />
-    <Content Include="bin\WebGrease.dll" />
+    <Content Include="editorApp\bin\Antlr3.Runtime.dll" />
+    <Content Include="editorApp\bin\EntityFramework.dll" />
+    <Content Include="editorApp\bin\EntityFramework.SqlServer.dll" />
+    <Content Include="editorApp\bin\Microsoft.AI.Agent.Intercept.dll" />
+    <Content Include="editorApp\bin\Microsoft.AI.DependencyCollector.dll" />
+    <Content Include="editorApp\bin\Microsoft.AI.PerfCounterCollector.dll" />
+    <Content Include="editorApp\bin\Microsoft.AI.ServerTelemetryChannel.dll" />
+    <Content Include="editorApp\bin\Microsoft.AI.Web.dll" />
+    <Content Include="editorApp\bin\Microsoft.AI.WindowsServer.dll" />
+    <Content Include="editorApp\bin\Microsoft.ApplicationInsights.dll" />
+    <Content Include="editorApp\bin\Microsoft.AspNet.Identity.Core.dll" />
+    <Content Include="editorApp\bin\Microsoft.AspNet.Identity.EntityFramework.dll" />
+    <Content Include="editorApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" />
+    <Content Include="editorApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml" />
+    <Content Include="editorApp\bin\Microsoft.Web.Infrastructure.dll" />
+    <Content Include="editorApp\bin\Newtonsoft.Json.dll" />
+    <Content Include="editorApp\bin\Owin.dll" />
+    <Content Include="editorApp\bin\System.Web.Helpers.dll" />
+    <Content Include="editorApp\bin\System.Web.Mvc.dll" />
+    <Content Include="editorApp\bin\System.Web.Optimization.dll" />
+    <Content Include="editorApp\bin\System.Web.Razor.dll" />
+    <Content Include="editorApp\bin\System.Web.WebPages.Deployment.dll" />
+    <Content Include="editorApp\bin\System.Web.WebPages.dll" />
+    <Content Include="editorApp\bin\System.Web.WebPages.Razor.dll" />
+    <Content Include="editorApp\bin\TypeLite.dll" />
+    <Content Include="editorApp\bin\TypeLite.Net4.dll" />
+    <Content Include="editorApp\bin\WebGrease.dll" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\loading_spinner.gif" />
+    <Content Include="editorApp\css\bootstrap-theme.css" />
+    <Content Include="editorApp\css\bootstrap-theme.min.css" />
+    <Content Include="editorApp\css\bootstrap.css" />
+    <Content Include="editorApp\css\bootstrap.min.css" />
+    <Content Include="editorApp\css\starter-template.css" />
+    <Content Include="editorApp\fabric\fabric.js" />
+    <Content Include="editorApp\fonts\glyphicons-halflings-regular%281%29.svg" />
+    <Content Include="editorApp\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="editorApp\img\bg.png" />
+    <Content Include="editorApp\joint\joint%281%29.js" />
+    <Content Include="editorApp\joint\joint.css" />
+    <Content Include="editorApp\joint\joint.js" />
+    <Content Include="editorApp\js\addElement.js" />
+    <Content Include="editorApp\js\drawingLines.js" />
+    <Content Include="editorApp\js\keyboard.js" />
+    <Content Include="editorApp\js\libs\bootstrap.js" />
+    <Content Include="editorApp\js\libs\bootstrap.min.js" />
+    <Content Include="editorApp\js\libs\jquery.js" />
+    <Content Include="editorApp\js\libs\npm.js" />
+    <Content Include="editorApp\js\main.js" />
+    <Content Include="editorApp\js\menu.js" />
+    <Content Include="editorApp\js\resizing.js" />
+    <Content Include="editorApp\js\scalableCanvas.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -305,6 +342,22 @@
     <Content Include="Images\WhiteStar.gif" />
     <Content Include="Images\YellowStar.gif" />
     <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <Content Include="editorApp\.settings\%281%29.jsdtscope" />
+    <Content Include="editorApp\.settings\.jsdtscope" />
+    <Content Include="editorApp\.settings\org.eclipse.wst.jsdt.ui.superType%281%29.container" />
+    <Content Include="editorApp\.settings\org.eclipse.wst.jsdt.ui.superType%281%29.name" />
+    <Content Include="editorApp\.settings\org.eclipse.wst.jsdt.ui.superType.container" />
+    <Content Include="editorApp\.settings\org.eclipse.wst.jsdt.ui.superType.name" />
+    <Content Include="editorApp\css\bootstrap-theme.css.map" />
+    <Content Include="editorApp\css\bootstrap.css.map" />
+    <Content Include="editorApp\fonts\glyphicons-halflings-regular%281%29.eot" />
+    <Content Include="editorApp\fonts\glyphicons-halflings-regular%281%29.ttf" />
+    <Content Include="editorApp\fonts\glyphicons-halflings-regular%281%29.woff" />
+    <Content Include="editorApp\fonts\glyphicons-halflings-regular%281%29.woff2" />
+    <Content Include="editorApp\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="editorApp\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="editorApp\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="editorApp\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="readme.md" />
     <Content Include="Images\default.png" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
@@ -342,8 +395,7 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Tape.cshtml" />
-    <Content Include="Views\Shared\_VoteNow.cshtml" />
-    <Content Include="Views\Shared\_VoteShow.cshtml" />
+    <Content Include="Views\Post\EditorApp.cshtml" />
     <None Include="_typingsrc" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -412,6 +464,17 @@
     <TypeScriptCompile Include="typings\main\ambient\core-js\index.d.ts" />
     <TypeScriptCompile Include="typings\main\ambient\jquery\index.d.ts" />
     <TypeScriptCompile Include="typings\main\ambient\TypeLite\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201606211143266_InitialCreate.resx">
+      <DependentUpon>201606211143266_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606241405031_m1.resx">
+      <DependentUpon>201606241405031_m1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606241408358_m2.resx">
+      <DependentUpon>201606241408358_m2.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

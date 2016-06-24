@@ -126,7 +126,10 @@
                     <div class="col">
                         <dl class="dl-horizontal">
                             <dd>
+                               @if (post.post.title != null)
+                               {
                                 <h3>  @Html.ActionLink(post.post.title, "PostPage", "Post", new { id = post.post.id }, null)  </h3>
+                               }
                             </dd>
                             <dd>
                                 Автор:  @Html.ActionLink(post.UserEmail, "UserPage", "Account", new { id = post.post.UserId }, null)

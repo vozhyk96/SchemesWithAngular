@@ -15,5 +15,7 @@ namespace Schemes
         public double rating { get; set; }
         public string UserId { get; set; }
         public DateTime time { get; set; }
+        public byte[] image { get; set; }
+        public string json { get; set; }
     }
 }

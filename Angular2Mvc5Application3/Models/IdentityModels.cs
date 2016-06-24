@@ -3,7 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-
+using Schemes.Models.DbModels;
 
 namespace Schemes.Models
 {
@@ -36,5 +36,6 @@ namespace Schemes.Models
             return new ApplicationDbContext();
         }
         public DbSet<Post> Posts { get; set; }
+        public DbSet<Temp> Temp { get; set; }
     }
 }

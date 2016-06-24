@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Schemes.Models;
+using Schemes.Models.DbModels;
 
 namespace Schemes
 {
@@ -166,6 +167,51 @@ namespace Schemes
                     }
                 }
                 return posts;
+            }
+        }
+
+        static public void AddScheme(int id, string UserId, byte[] image)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                if(id == 0)
+                {
+                    Temp temp = new Temp();
+                    temp.Image = image;
+                    temp.UserId = UserId;
+                    db.Temp.Add(temp);
+                }
+                else
+                {
+                    Post post = db.Posts.Find(id);
+                    post.image = image;
+                }
+                db.SaveChanges();
+            }
+
+        }
+
+        static public Temp GetTemp(string UserId)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                foreach (var temp in db.Temp)
+                {
+                    if (temp.UserId == UserId)
+                    {
+                        return temp;
+                    }
+                }
+            }
+            return null;
+        }
+        static public void Delete(int id)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                Temp temp = db.Temp.Find(id);
+                db.Temp.Remove(temp);
+                db.SaveChanges();
             }
         }
 

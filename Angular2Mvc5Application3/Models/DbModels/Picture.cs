@@ -24,25 +24,34 @@ namespace Schemes
         private void GetHtmlRaw()
         {
             Image im = byteArrayToImage();
-            double k = maxHeight / im.Height;
-            double height = im.Height;
-            double with = im.Width;
-            height *= k;
-            with *= k;
-            if(with > maxWith)
+            this.HtmlRaw = "";
+            if (im != null)
             {
-                k = maxWith / with;
-                with *= k;
+                double k = maxHeight / im.Height;
+                double height = im.Height;
+                double with = im.Width;
                 height *= k;
+                with *= k;
+                if (with > maxWith)
+                {
+                    k = maxWith / with;
+                    with *= k;
+                    height *= k;
+                }
+                this.HtmlRaw = String.Format("<img style='width:{0}px; height:{1}px;' src=\"data:image/jpeg;base64,", with.ToString(), height.ToString());
             }
-            this.HtmlRaw = String.Format("<img style='width:{0}px; height:{1}px;' src=\"data:image/jpeg;base64,",with.ToString(),height.ToString());
+            
         }
 
         private Image byteArrayToImage()
         {
-            MemoryStream ms = new MemoryStream(this.Image);
-            Image returnImage = System.Drawing.Image.FromStream(ms);
-            return returnImage;
+            if (this.Image != null)
+            {
+                MemoryStream ms = new MemoryStream(this.Image);
+                Image returnImage = System.Drawing.Image.FromStream(ms);
+                return returnImage;
+            }
+            return null;
         }
     }
 }

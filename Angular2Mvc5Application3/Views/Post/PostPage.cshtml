@@ -30,6 +30,15 @@
         <dd>
             @Model.post.tags
         </dd>
+
+        @if (Model.picture.Image != null)
+        {
+            <td>
+                @Html.Raw(Model.picture.HtmlRaw
+                        + Convert.ToBase64String(Model.picture.Image) + "\" />")
+            </td>
+        }
+
         <dt>Описание:</dt>
         <dd>
             @Model.post.description
