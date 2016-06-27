@@ -64,6 +64,8 @@ namespace Schemes.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
+            if (post.Votes == null)
+                post.Votes = "";
             ViewPost model = new ViewPost(post);
             return View(model);
         }

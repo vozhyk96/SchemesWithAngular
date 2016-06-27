@@ -6,8 +6,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" src="rating.css" />
-<script type="text/javascript" src="jquery.min.js"></script>
-<script type="text/javascript" src="rating.js"></script>
+<script type="text/javascript" src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="~/Scripts/bootstrap-rating/bootstrap-rating.js"></script>
 
 <h2>Пост</h2>
 <p class="text-success">@ViewBag.StatusMessage</p>
@@ -52,15 +52,12 @@
             @Model.post.time
         </dd>
     </dl>
-    <div id="star-rating">
-        <input type="radio" name="example" class="rating" value="1" />
-        <input type="radio" name="example" class="rating" value="2" />
-        <input type="radio" name="example" class="rating" value="3" />
-        <input type="radio" name="example" class="rating" value="4" />
-        <input type="radio" name="example" class="rating" value="5" />
-    </div>
 </div>
-@Html.Partial("Comments")
+
+<div class="tr" style="background-color:#f1f1f1;">
+    <div class="td">@Html.Partial("_VoteNow", Model.post.id.ToString())</div>
+    <div class="td">@Html.Partial("_VoteShow", Model.post.Votes)</div>
+</div>
 
 @if ((Model.post.UserId == User.Identity.GetUserId()) || (User.IsInRole("admin")))
 {

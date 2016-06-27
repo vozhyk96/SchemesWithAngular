@@ -17,5 +17,6 @@ namespace Schemes
         public DateTime time { get; set; }
         public byte[] image { get; set; }
         public string json { get; set; }
+        public string Votes { get; set; }
     }
 }
