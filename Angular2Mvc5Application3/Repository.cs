@@ -170,21 +170,32 @@ namespace Schemes
             }
         }
 
-        static public void AddScheme(int id, string UserId, byte[] image)
+        static public void AddScheme(int id, string UserId, byte[] image, string json)
         {
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
                 if(id == 0)
                 {
-                    Temp temp = new Temp();
+                    Temp temp = GetTemp(UserId);
+                    if (temp != null)
+                    {
+                        temp = db.Temp.Find(temp.id);
+                        temp.Image = image;
+                        temp.UserId = UserId;
+                        temp.json = json;
+                        db.SaveChanges();
+                    }
+                    temp = new Temp();
                     temp.Image = image;
                     temp.UserId = UserId;
+                    temp.json = json;
                     db.Temp.Add(temp);
                 }
                 else
                 {
                     Post post = db.Posts.Find(id);
                     post.image = image;
+                    post.json = json;
                 }
                 db.SaveChanges();
             }
@@ -205,7 +216,7 @@ namespace Schemes
             }
             return null;
         }
-        static public void Delete(int id)
+        static public void DeleteTemp(int id)
         {
             using (ApplicationDbContext db = new ApplicationDbContext())
             {

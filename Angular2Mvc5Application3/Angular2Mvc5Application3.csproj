@@ -235,7 +235,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PostController.cs" />
-    <Compile Include="Filters\CultureAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -252,21 +251,13 @@
     <Compile Include="Migrations\201606241408358_m2.Designer.cs">
       <DependentUpon>201606241408358_m2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201606271528344_m3.cs" />
-    <Compile Include="Migrations\201606271528344_m3.Designer.cs">
-      <DependentUpon>201606271528344_m3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606271543463_m4.cs" />
-    <Compile Include="Migrations\201606271543463_m4.Designer.cs">
-      <DependentUpon>201606271543463_m4.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AppDbInitializer.cs" />
     <Compile Include="Models\DbModels\Temp.cs" />
-    <Compile Include="Models\DbModels\VoteLog.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="MultiButtonAttribute.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
@@ -274,16 +265,6 @@
     <Compile Include="Models\DbModels\Post.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository.cs" />
-    <Compile Include="Resources\Resource.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resource.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Resources\Resource.en.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resource.en.resx</DependentUpon>
-    </Compile>
     <Compile Include="Startup.cs" />
     <Compile Include="Models\ViewModels\ViewPost.cs" />
     <Compile Include="Models\ViewModels\ViewUser.cs" />
@@ -297,14 +278,6 @@
     <Content Include="App_Data\aspnet-WebApplication3-20160609082042_log.ldf">
       <DependentUpon>aspnet-WebApplication3-20160609082042.mdf</DependentUpon>
     </Content>
-    <Content Include="Content\bootstrap-rating.css" />
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\delete.gif" />
-    <Content Include="Content\rateit.css" />
-    <Content Include="Content\star.gif" />
     <Content Include="editorApp\bin\Antlr3.Runtime.dll" />
     <Content Include="editorApp\bin\EntityFramework.dll" />
     <Content Include="editorApp\bin\EntityFramework.SqlServer.dll" />
@@ -332,6 +305,8 @@
     <Content Include="editorApp\bin\TypeLite.dll" />
     <Content Include="editorApp\bin\TypeLite.Net4.dll" />
     <Content Include="editorApp\bin\WebGrease.dll" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\loading_spinner.gif" />
     <Content Include="editorApp\css\bootstrap-theme.css" />
     <Content Include="editorApp\css\bootstrap-theme.min.css" />
@@ -365,7 +340,6 @@
     </Content>
     <Content Include="app\app.component.js.map" />
     <Content Include="app\main.js.map" />
-    <Content Include="Images\starRating.png" />
     <Content Include="Images\WhiteStar.gif" />
     <Content Include="Images\YellowStar.gif" />
     <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
@@ -385,20 +359,10 @@
     <Content Include="editorApp\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="editorApp\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="editorApp\fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="readme.md" />
     <Content Include="Images\default.png" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
-    <Content Include="Scripts\bootstrap-rating\bootstrap-rating.js" />
-    <Content Include="Scripts\bootstrap-rating\bootstrap-rating.min.js" />
-    <Content Include="Scripts\jquery.rateit.js" />
-    <Content Include="Scripts\jquery.rateit.min.js" />
-    <Content Include="Scripts\npm.js" />
     <Content Include="styles.css" />
     <Content Include="systemjs.config.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -433,9 +397,6 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Tape.cshtml" />
     <Content Include="Views\Post\EditorApp.cshtml" />
-    <Content Include="Views\Shared\_VoteNow.cshtml" />
-    <Content Include="Views\Shared\_VoteShow.cshtml" />
-    <Content Include="Scripts\jquery.rateit.min.js.map" />
     <None Include="_typingsrc" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -473,6 +434,9 @@
     <Folder Include="Views\AppDbInitializer\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
@@ -511,22 +475,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606241408358_m2.resx">
       <DependentUpon>201606241408358_m2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606271528344_m3.resx">
-      <DependentUpon>201606271528344_m3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606271543463_m4.resx">
-      <DependentUpon>201606271543463_m4.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Resource.en.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resource.en.Designer.cs</LastGenOutput>
-      <CustomToolNamespace>Resources</CustomToolNamespace>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Resource.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
-      <CustomToolNamespace>Resources</CustomToolNamespace>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

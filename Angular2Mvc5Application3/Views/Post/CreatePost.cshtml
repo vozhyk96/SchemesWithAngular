@@ -9,10 +9,9 @@ else
     <h2>Редактировать Пост</h2>
 }
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
+<form action="" method="post">
 
+    @Html.AntiForgeryToken()
     <div class="form-horizontal">
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -25,7 +24,6 @@ else
                 @Html.ValidationMessageFor(model => model.title, "", new { @class = "text-danger" })
             </div>
         </div>
-
         <div class="form-group">
             @Html.Label("Тема", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -33,7 +31,6 @@ else
                 @Html.ValidationMessageFor(model => model.teme, "", new { @class = "text-danger" })
             </div>
         </div>
-
         <div class="form-group">
             @Html.Label("Тэги", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -41,14 +38,12 @@ else
                 @Html.ValidationMessageFor(model => model.tags, "", new { @class = "text-danger" })
             </div>
         </div>
-
         <div class="form-group">
             @Html.Label("Описание", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.TextAreaFor(model => model.description, 4, 105, new { htmlAttributes = new { @class = "form-control" } })
             </div>
         </div>
-
         @if (Model.image != null)
         {
             <td>
@@ -56,7 +51,6 @@ else
                         + Convert.ToBase64String(Model.image) + "\" />")
             </td>
         }
-
         <div class="form-group">
             @Html.Label("Рейтинг", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -64,19 +58,20 @@ else
                 @Html.ValidationMessageFor(model => model.rating, "", new { @class = "text-danger" })
             </div>
         </div>
-        
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Сохранить" class="btn btn-default" />
+                <input type="submit" name="action:CreatePost" value="Сохранить" class="btn btn-default" />
             </div>
         </div>
-
     </div>
-}                            
-@Html.ActionLink("Add scheme", "EditorApp", "Post", new { Model.id }, null)
-
-
-
-<div>
-    @Html.ActionLink("Назад", "UserPage", "Account", new { id = Model.UserId }, null)
-</div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" name="action:EditorApp" value="Добавить схему" class="btn btn-default" />
+        </div>
+    </div>
+</form>
+   
+    <div>
+        @Html.ActionLink("Назад", "UserPage", "Account", new { id = Model.UserId }, null)
+    </div>

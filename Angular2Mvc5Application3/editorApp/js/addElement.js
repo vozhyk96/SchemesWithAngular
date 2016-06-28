@@ -8,6 +8,7 @@ $(document).ready(function () {
     fabric.Object.prototype.originX = fabric.Object.prototype.originY = 'center';
 
 
+
     /*------- OBJECTS -----------*/
 
     function newRectangle(x, y) {
@@ -23,6 +24,7 @@ $(document).ready(function () {
                 hasBorders: false
             });
         }
+
 
         var group = new fabric.Group([
             //makeRectangle(),

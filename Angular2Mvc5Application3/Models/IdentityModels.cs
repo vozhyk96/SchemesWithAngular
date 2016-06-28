@@ -37,6 +37,5 @@ namespace Schemes.Models
         }
         public DbSet<Post> Posts { get; set; }
         public DbSet<Temp> Temp { get; set; }
-        public DbSet<VoteLog> VoteLog { get; set; }
     }
 }

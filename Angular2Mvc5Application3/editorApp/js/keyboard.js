@@ -1,5 +1,5 @@
 $(document).ready(function () {
-
+    var jData;
     var copiedObject;
     var copiedObjects = new Array();
     var canvas = document.getElementById("canvas").fabric;
@@ -91,13 +91,14 @@ $(document).ready(function () {
     }
 
     function download() {
+        jData = JSON.stringify(canvas);
         var dataUrl = canvas.toDataURL('image/jpeg');
         this.href = dataUrl;
-        console.log(dataUrl);
+        console.log(jData);
         var Data = new FormData();
+        Data.append("json",jData)
         Data.append("picture", dataUrl)
         Data.append("url",document.URL)
-        this.href = dataUrl;
         $.ajax({
             type: "POST",
             url: "/Post/EditorApp",
@@ -115,6 +116,7 @@ $(document).ready(function () {
         }
             
         });
+
     };
     downloadLnk.addEventListener('click', download, false);
 

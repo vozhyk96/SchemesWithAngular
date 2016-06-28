@@ -24,26 +24,59 @@ namespace Schemes.Controllers
                 Temp temp = Repository.GetTemp(UserId);
                 if (temp != null)
                 {
-                    Repository.Delete(temp.id);
                     post.image = temp.Image;
-                    post.json = temp.json;
                 }
             }
             if (UserId == null)
             {
                 post = Repository.GetPostById(id);
             }
+
+            post = GutFromSession(post);
             Picture p = new Picture(post.image);
             ViewBag.HtmlRaw = p.HtmlRaw;
             return View(post);
         }
 
+        private Post GutFromSession(Post post)
+        {
+            if (Session["Title"] != null)
+            {
+                post.title = Session["Title"].ToString();
+                Session["Title"] = null;
+            }
+            if (Session["Teme"] != null)
+            {
+                post.teme = Session["Teme"].ToString();
+                Session["Teme"] = null;
+            }
+            if (Session["Tags"] != null)
+            {
+                post.tags = Session["Tags"].ToString();
+                Session["Tags"] = null;
+            }
+            if (Session["Description"] != null)
+            {
+                post.description = Session["Description"].ToString();
+                Session["Description"] = null;
+            }
+            return post;
+        }
+
         [HttpPost]
+        [MultipleButton(Name = "action", Argument = "CreatePost")]
         public ActionResult CreatePost(Post model)
         {
             int id = 0;
             if (model.id == 0)
             {
+                Temp temp = Repository.GetTemp(model.UserId);
+                if (temp != null)
+                {
+                    model.image = temp.Image;
+                    model.json = temp.json;
+                   
+                }
                 model.time = DateTime.Now;
                 id = Repository.AddPost(model);
             }
@@ -64,8 +97,6 @@ namespace Schemes.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-            if (post.Votes == null)
-                post.Votes = "";
             ViewPost model = new ViewPost(post);
             return View(model);
         }
@@ -76,14 +107,37 @@ namespace Schemes.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        [HttpGet]
+
+        [MultipleButton(Name = "action", Argument = "EditorApp")]
         public ActionResult EditorApp(Post post)
         {
-            return View();
+            Session["PostId"] = post.id;
+            Session["Title"] = post.title;
+            Session["Teme"] = post.teme;
+            Session["tags"] = post.tags;
+            Session["Description"] = post.description;
+            return View(post.id);
         }
-        [HttpPost]
-        [AcceptVerbs(HttpVerbs.Post)]
-        public JsonResult EditorApp(string picture, string url)
+        [HttpGet]
+        public JsonResult MyApp()
+        {
+            string json = "";
+            string s = "";
+            int id = 0;
+            if (Session["PostId"] != null)
+            {
+                s = Session["PostId"].ToString();
+                id = int.Parse(s);
+            }
+            if (id != 0)
+            {
+                json = Repository.GetPostById(id).json;
+            }
+            return Json(json,JsonRequestBehavior.AllowGet);
+        }
+        
+       
+        public JsonResult EditorApp(string json, string picture, string url)
         {
             string _imgname = string.Empty;
             if (System.Web.HttpContext.Current.Request.Files.AllKeys.Any())
@@ -103,20 +157,11 @@ namespace Schemes.Controllers
 
                     // Saving Image in Original Mode
                     pic.SaveAs(path);
-
-                    // resizing image
-                    MemoryStream ms = new MemoryStream();
-                    WebImage img = new WebImage(_comPath);
-
-                    if (img.Width > 200)
-                        img.Resize(200, 200);
-                    img.Save(_comPath);
-                    // end resize
                 }
             }
             int id = GetIdFromUrl(url);
             byte[] image = Convert.FromBase64String(GetBase64(picture));
-            Repository.AddScheme(id,User.Identity.GetUserId(),image);
+            Repository.AddScheme(id,User.Identity.GetUserId(),image,json);
             return Json(Convert.ToString(_imgname), JsonRequestBehavior.AllowGet);
         }
 
@@ -129,13 +174,16 @@ namespace Schemes.Controllers
 
         private int GetIdFromUrl(string url)
         {
-            string[] s = url.Split('/');
+            string[] s = url.Split('=');
             string id = s[s.Length-1];
             if(id[id.Length-1]=='#')
             {
                 id = id.Substring(0, id.Length - 1);
             }
-            return int.Parse(id);
+            int result;
+            if(int.TryParse(id, out result))
+                return result;
+            return 0;
         }
     }
 }
