@@ -8,11 +8,14 @@ using System.Data.Entity;
 using System.IO;
 using System.Web.Helpers;
 using Schemes.Models.DbModels;
+using Schemes.Models;
 
 namespace Schemes.Controllers
 {
     public class PostController : Controller
     {
+
+        
         // GET: Post
         [HttpGet]
         public ActionResult CreatePost(int id = 0, string UserId = null)
@@ -97,6 +100,8 @@ namespace Schemes.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
+            if (post.Votes == null)
+                post.Votes = "";
             ViewPost model = new ViewPost(post);
             return View(model);
         }
