@@ -215,3 +215,7 @@ D:\Itransition\Angular2Mvc5Application3\Angular2Mvc5Application3\obj\Debug\Angul
 D:\Itransition\Angular2Mvc5Application3\Angular2Mvc5Application3\obj\Debug\Angular2Mvc5Application3.pdb
 D:\Itransition\Angular2Mvc5Application3\Angular2Mvc5Application3\obj\Debug\Angular2Mvc5Application3.Migrations.m3.resources
 D:\Itransition\Angular2Mvc5Application3\Angular2Mvc5Application3\obj\Debug\Angular2Mvc5Application3.Migrations.m4.resources
+D:\Itransition\Angular2Mvc5Application3\Angular2Mvc5Application3\bin\en\Angular2Mvc5Application3.resources.dll
+D:\Itransition\Angular2Mvc5Application3\Angular2Mvc5Application3\obj\Debug\Angular2Mvc5Application3.Resources.Resource.resources
+D:\Itransition\Angular2Mvc5Application3\Angular2Mvc5Application3\obj\Debug\Angular2Mvc5Application3.Resources.Resource.en.resources
+D:\Itransition\Angular2Mvc5Application3\Angular2Mvc5Application3\obj\Debug\en\Angular2Mvc5Application3.resources.dll
