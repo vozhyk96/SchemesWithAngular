@@ -11,10 +11,12 @@ using Microsoft.Owin.Security;
 using Schemes.Models;
 using System.IO;
 using System.Drawing;
+using Schemes.Filters;
 
 namespace Schemes.Controllers
 {
     [Authorize]
+    [Culture]
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
