@@ -3,7 +3,6 @@
 @{
     ViewBag.Title = "Home Page";
 }
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,20 +18,11 @@
 <body>
     </br>
     </br>
-    @using (Html.BeginForm("Index", "Home"))
-    {
-        <div class="form-group">
-            <input type="text" name="s" class="text-right"/>
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Найти" class="btn btn-default" />
-            </div>
-        </div>
-    }
+
     <div id="scrolList">
         @Html.Partial("Tape")
     </div>
     <div id="loading"><img src='@Url.Content("~/Content/loading_spinner.gif")'></div>
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     <script type="text/javascript">

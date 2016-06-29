@@ -2,6 +2,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="~/Content/bootstrap.css" />
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
@@ -9,7 +12,6 @@
     <title>@ViewBag.Title – приложение ASP.NET</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
 </head>
 <body>
     <div>
@@ -42,10 +44,13 @@
                         </li>
                     }
                 </ul>
+
+
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
+
     <div class="container body-content">
         @RenderBody()
         <hr />
