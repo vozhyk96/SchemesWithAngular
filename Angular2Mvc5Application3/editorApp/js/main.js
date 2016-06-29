@@ -10,8 +10,10 @@ $(document).ready(function () {
     var grid = 10;
     var width = document.getElementById("canvas").width;
     var height = document.getElementById("canvas").height;
+    document.getElementById("canvas").click()
     canvas.setBackgroundColor({ source: src, repeat: 'repeat' }, function () {
     });
+    
 
     // create grid
     $.ajax({

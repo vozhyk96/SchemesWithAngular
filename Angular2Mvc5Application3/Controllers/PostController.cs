@@ -9,6 +9,7 @@ using System.IO;
 using System.Web.Helpers;
 using Schemes.Models.DbModels;
 using Schemes.Models;
+using Schemes.Models.ViewModels;
 
 namespace Schemes.Controllers
 {
@@ -169,6 +170,36 @@ namespace Schemes.Controllers
             Repository.AddScheme(id,User.Identity.GetUserId(),image,json);
             return Json(Convert.ToString(_imgname), JsonRequestBehavior.AllowGet);
         }
+
+        [HttpPost]
+        public JsonResult AddComment(string text, string url)
+        {
+            Comment comment = new Comment();
+            comment.EmailAutor = Repository.GetUser(User.Identity.GetUserId()).Email;
+            comment.CommentText = text;
+            comment.time = DateTime.Now;
+            comment.PostId = GetPostIdFromUrl(url);
+            comment = Repository.AddComment(comment);
+            return Json(Repository.CommentToViewComment(comment), JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult GetComments(string url)
+        {
+            int PostId = GetPostIdFromUrl(url);
+            List<ViewComment> comments = Repository.GetComments(PostId);
+            return Json(comments, JsonRequestBehavior.AllowGet);
+
+        }
+
+        private int GetPostIdFromUrl(string url)
+        {
+            string[] a = url.Split('/');
+            int id = int.Parse(a[a.Length - 1]);
+            return id;
+        }
+
+        
 
         private string GetBase64(string picture)
         {

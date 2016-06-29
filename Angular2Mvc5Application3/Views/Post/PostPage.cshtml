@@ -64,6 +64,48 @@
     }
 </div>
 
+<!doctype html>
+<html ng-app="todoApp">
+<head>
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/todo.js"></script>
+</head>
+<body>
+    <h2>Todo</h2>
+    <div ng-controller="TodoListController as todoList">
+        <form ng-submit="todoList.addTodo()">
+            <input type="text" ng-model="todoList.todoText" size="30"
+                   placeholder="add new comment here" id="Add">
+            <input class="btn-primary" type="submit" value="add">
+        </form>
+        <form ng-submit="todoList.GetComments()"></form>
+        <dl class="dl-horizontal">
+            <dd ng-repeat="todo in todoList.todos">
+                <div class="thumbnail">
+                    <div class="col">
+                        <dl class="dl-horizontal">
+                            <dd>
+                                {{todo.EmailAutor}}
+                            </dd>
+                            <dd>
+                                {{todo.CommentText}}
+                            </dd>
+                            <dd>
+                                {{todo.time}}
+                            </dd>
+                            <
+                        </dl>
+                    </div>
+                </div>
+            </dd>
+
+        </dl>
+
+        <label text="text" runat="server" />
+    </div>
+</body>
+</html>
+
 @if ((Model.post.UserId == User.Identity.GetUserId()) || (User.IsInRole("admin")))
 {
     using (Html.BeginForm("CreatePost", "Post", FormMethod.Get))

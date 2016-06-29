@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using Schemes.Models;
 using Schemes.Models.DbModels;
+using Schemes.Models.ViewModels;
 
 namespace Schemes
 {
@@ -224,6 +225,52 @@ namespace Schemes
                 db.Temp.Remove(temp);
                 db.SaveChanges();
             }
+        }
+
+        static public Comment AddComment(Comment comment)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                db.Comment.Add(comment);
+                db.SaveChanges();
+                return comment;
+            }
+        }
+
+        static public Comment GetComment(int id)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                Comment comment = db.Comment.Find(id);
+                return comment;
+            }
+        }
+
+        static public ViewComment CommentToViewComment(Comment comment)
+        {
+            ViewComment vcomment = new ViewComment();
+            vcomment.id = comment.id;
+            vcomment.PostId = comment.PostId;
+            vcomment.EmailAutor = comment.EmailAutor;
+            vcomment.CommentText = comment.CommentText;
+            vcomment.time = comment.time.ToString();
+            return vcomment;
+        }
+
+        static public List<ViewComment> GetComments(int PostId)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                List<ViewComment> result = new List<ViewComment>();
+                foreach (var comment in db.Comment)
+                {
+                    if (comment.PostId == PostId)
+                        result.Add(CommentToViewComment(comment));
+                        
+                }
+                return result;
+            }
+
         }
 
     }
