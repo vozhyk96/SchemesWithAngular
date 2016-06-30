@@ -273,5 +273,51 @@ namespace Schemes
 
         }
 
+        static public List<ViewPost> GetPostsSortedByDate(int pageSize, int page, string s = "")
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                var itemsToSkip = page * pageSize;
+                List<Post> posts = db.Posts.OrderByDescending(t => t.time).Skip(itemsToSkip).Take(pageSize).ToList();
+                if (s != "")
+                {
+                    List<Post> subposts = GetPostsWithSubstring(posts, s);
+                    posts = subposts;
+                }
+                    
+                
+                List<ViewPost> result = new List<ViewPost>();
+                foreach (var post in posts)
+                {
+                    ViewPost vpost = new ViewPost(post);
+                    result.Add(vpost);
+                }
+                return result;
+            }
+        }
+
+        static private List<Post> GetPostsWithSubstring(List<Post> posts, string s)
+        {
+            List<Post> result = new List<Post>();
+            foreach (Post post in posts)
+            {
+                ViewPost vpost = new ViewPost(post);
+                if ((post.title.Contains(s)) || (post.teme.Contains(s)) || (post.tags.Contains(s) || (post.description.Contains(s) || (post.time.ToString().Contains(s)) || (vpost.UserEmail.Contains(s)))))
+                {
+                    result.Add(post);
+                }
+            }
+            return result;
+        }
+
+        static public int GetNumberOfPosts()
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+
+            {
+                return db.Posts.Count();
+            }
+        }
+
     }
 }

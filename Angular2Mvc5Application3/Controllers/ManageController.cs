@@ -7,11 +7,12 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Schemes.Models;
-
+using Schemes.Filters;
 
 namespace Schemes.Controllers
 {
     [Authorize]
+    [Culture]
     public class ManageController : Controller
     {
         private ApplicationSignInManager _signInManager;
@@ -56,10 +57,10 @@ namespace Schemes.Controllers
         public async Task<ActionResult> Index(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
-                message == ManageMessageId.ChangePasswordSuccess ? "Ваш пароль изменен."
-                : message == ManageMessageId.SetPasswordSuccess ? "Пароль задан."
+                message == ManageMessageId.ChangePasswordSuccess ? Resources.Resource.PasswordChange
+                : message == ManageMessageId.SetPasswordSuccess ? Resources.Resource.PasswordSet
                 : message == ManageMessageId.SetTwoFactorSuccess ? "Настроен поставщик двухфакторной проверки подлинности."
-                : message == ManageMessageId.Error ? "Произошла ошибка."
+                : message == ManageMessageId.Error ? Resources.Resource.Error
                 : message == ManageMessageId.AddPhoneSuccess ? "Ваш номер телефона добавлен."
                 : message == ManageMessageId.RemovePhoneSuccess ? "Ваш номер телефона удален."
                 : "";

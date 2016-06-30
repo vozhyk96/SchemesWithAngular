@@ -4,14 +4,14 @@
 }
 @if (!User.Identity.IsAuthenticated)
 {
-    <text>Please <a href="/Account/Login?ReturnUrl=@Request.Url.AbsolutePath" title="Login to rate">Login</a> to rate</text>
+    <text>@Resources.Resource.Please <a href="/Account/Login?ReturnUrl=@Request.Url.AbsolutePath" title="Login to rate">@Resources.Resource.LoginR</a> @Resources.Resource.ToRate</text>
     return;
 }
 @if (Request.Cookies[url] == null)
 {
     <div id="ratingDiv" class="smallText">
-        Poor
-        <img src="/images/whitestar.gif" alt="" class="ratingStar" data-value="1" /><img src="/images/whitestar.gif" alt="" class="ratingStar" data-value="2" /><img src="/images/whitestar.gif" alt="" class="ratingStar" data-value="3" /><img src="/images/whitestar.gif" alt="" class="ratingStar" data-value="4" /><img src="/images/whitestar.gif" alt="" class="ratingStar" data-value="5" /> Excellent
+        @Resources.Resource.Poor
+        <img src="/images/whitestar.gif" alt="" class="ratingStar" data-value="1" /><img src="/images/whitestar.gif" alt="" class="ratingStar" data-value="2" /><img src="/images/whitestar.gif" alt="" class="ratingStar" data-value="3" /><img src="/images/whitestar.gif" alt="" class="ratingStar" data-value="4" /><img src="/images/whitestar.gif" alt="" class="ratingStar" data-value="5" /> @Resources.Resource.Exelent
         <label id="lblResult"></label>
     </div>
     <style type="text/css">
@@ -52,5 +52,5 @@
 }
 else
 {
-    <text><span style="color:green;">Thanks for your vote !</span></text>
+    <text><span style="color:green;">@Resources.Resource.Thanks</span></text>
 }

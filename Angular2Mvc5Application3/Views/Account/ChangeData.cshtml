@@ -2,10 +2,10 @@
 @model Schemes.ViewUser
 
 @{
-    ViewBag.Title = "Изменить данные";
+    ViewBag.Title = Resources.Resource.ChangeData;
 }
 
-<h2>Изменить данные</h2>
+<h2>ViewBag.Title</h2>
 
 @using (Html.BeginForm())
 {
@@ -16,7 +16,7 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.id)
         <div class="form-group">
-            @Html.Label("Фамилия", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label(Resources.Resource.Surname, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.surname, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.surname, "", new { @class = "text-danger" })
@@ -24,7 +24,7 @@
         </div>
 
         <div class="form-group">
-            @Html.Label("Имя", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label(Resources.Resource.Name, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
@@ -32,7 +32,7 @@
         </div>
 
         <div class="form-group">
-            @Html.Label("Отчество", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label(Resources.Resource.Patronymic, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.patronymic, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.patronymic, "", new { @class = "text-danger" })
@@ -42,12 +42,12 @@
         
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Сохранить" class="btn btn-default" />
+                <input type="submit" value=@Resources.Resource.Save class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Назад", "UserPage", "Account", new { id = Model.id }, null)
+    @Html.ActionLink(Resources.Resource.Back, "UserPage", "Account", new { id = Model.id }, null)
 </div>

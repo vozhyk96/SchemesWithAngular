@@ -10,9 +10,11 @@ using System.Web.Helpers;
 using Schemes.Models.DbModels;
 using Schemes.Models;
 using Schemes.Models.ViewModels;
+using Schemes.Filters;
 
 namespace Schemes.Controllers
 {
+    [Culture]
     public class PostController : Controller
     {
 
@@ -22,6 +24,19 @@ namespace Schemes.Controllers
         public ActionResult CreatePost(int id = 0, string UserId = null)
         {
             Post post = new Post();
+            if ((id == 0) && (UserId == null))
+            {
+                if (Session["id"] != null)
+                {
+                    id = int.Parse(Session["id"].ToString());
+                    Session["id"] = null;
+                }
+                if (Session["UserId"] != null)
+                {
+                    UserId = Session["UserId"].ToString();
+                    Session["UserId"] = null;
+                }
+            }
             if (id == 0)
             {
                 post.UserId = UserId;
@@ -30,10 +45,12 @@ namespace Schemes.Controllers
                 {
                     post.image = temp.Image;
                 }
+                Session["UserId"] = UserId;
             }
             if (UserId == null)
             {
                 post = Repository.GetPostById(id);
+                Session["id"] = id;
             }
 
             post = GutFromSession(post);

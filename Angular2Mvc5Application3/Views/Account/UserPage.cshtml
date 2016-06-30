@@ -1,6 +1,6 @@
 ﻿@model Schemes.ViewUser
 @{
-    ViewBag.Title = "Страница пользователя";
+    ViewBag.Title = Resources.Resource.UserPage;
 }
 
 
@@ -27,7 +27,7 @@
             <input type="hidden" name="modelId" value=@Model.id />
             @Html.ValidationSummary(true)
             <fieldset>
-                <div class="editor-label">Аватарка пользователя</div>
+                <div class="editor-label">@Resources.Resource.UserAvatar</div>
                 @if (Model.isUser)
                 {
                     <div class="editor-field">
@@ -37,7 +37,7 @@
                                 <p>
                                     <div class="form-group">
                                         <div class="col-md-offset-2 col-md-10">
-                                            <input type="submit" value="Добавить" class="btn btn-default" />
+                                            <input type="submit" value=@Resources.Resource.Add class="btn btn-default" />
                                         </div>
                                     </div>
 
@@ -54,7 +54,7 @@
                 <div class="form-group">
                     <input type="hidden" name="id" value=@Model.id />
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Убрать аватарку" class="btn btn-default" />
+                        <input type="submit" value=@Resources.Resource.DeleteAvatar class="btn btn-default" />
                     </div>
                 </div>
             }
@@ -64,47 +64,47 @@
     <div class="col-sm-4">
         <p class="text-success">@ViewBag.StatusMessage</p>
         <div>
-            <h4>Личая информация</h4>
+            <h4>@Resources.Resource.PersonalInformation</h4>
             <hr />
             <dl class="dl-horizontal">
                 @if (Model.isUser)
                 {
-                <dt>Пароль:</dt>
+                <dt>@Resources.Resource.Password:</dt>
                 <dd>
                     [
                     @if (Model.HasPassword)
                     {
-                        @Html.ActionLink("Смена пароля", "ChangePassword", "Manage")
+                        @Html.ActionLink(Resources.Resource.ChangePassword, "ChangePassword", "Manage")
                     }
                     else
                     {
-                        @Html.ActionLink("Создать", "SetPassword", "Manage")
+                        @Html.ActionLink(Resources.Resource.Create, "SetPassword", "Manage")
                     }
                     ]
                 </dd>
                 }
                 
-                <dt>Фамилия:</dt>
+                <dt>@Resources.Resource.Surname:</dt>
                 <dd>
                     @Model.surname
                 </dd>
-                <dt>Имя:</dt>
+                <dt>@Resources.Resource.Name:</dt>
                 <dd>
                     @Model.name
                 </dd>
-                <dt>Отчество:</dt>
+                <dt>@Resources.Resource.Patronymic:</dt>
                 <dd>
                     @Model.patronymic
                 </dd>
             </dl>
-            @if ((Model.isUser)|| (User.IsInRole("admin")))
+            @if ((Model.isUser)||(User.IsInRole("admin")))
             {
                 using (Html.BeginForm("ChangeData", "Account", FormMethod.Get))
                 {
                     <input type="hidden" name="modelId" value=@Model.id />
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
-                            <input id="ButtonChange" type="submit" class="btn btn-default" value="Изменить ФИО" />
+                            <input id="ButtonChange" type="submit" class="btn btn-default" value=@Resources.Resource.ChangeFIO />
                         </div>
                     </div>
                 }
@@ -117,7 +117,7 @@
 
 </div>
 
-<div align="center"><h2>Посты пользоателя</h2></div>
+<div align="center"><h2>@Resources.Resource.UserPosts</h2></div>
 
 
     @foreach (ViewPost post in Model.posts)

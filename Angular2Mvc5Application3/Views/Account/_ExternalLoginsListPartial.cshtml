@@ -1,7 +1,7 @@
 ﻿@model Schemes.Models.ExternalLoginListViewModel
 @using Microsoft.Owin.Security
 
-<h4>Используйте для входа другую службу.</h4>
+<h4>@Resources.Resource.AnotherService</h4>
 <hr />
 @{
     var loginProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();

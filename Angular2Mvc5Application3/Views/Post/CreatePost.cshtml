@@ -1,11 +1,11 @@
 ﻿@model Schemes.Post
 @if (Model.id == 0)
 {
-    <h2>Создать Пост</h2>
+    <h2>@Resources.Resource.AddPost</h2>
 }
 else
 {
-    <h2>Редактировать Пост</h2>
+    <h2>@Resources.Resource.ChangePost</h2>
 }
 <style>
     hr {
@@ -25,11 +25,11 @@ else
                 @Html.HiddenFor(model => model.UserId)
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" name="action:EditorApp" value="Добавить схему" class="btn btn-default" />
+                        <input type="submit" name="action:EditorApp" value=@Resources.Resource.AddScheme class="btn btn-default" />
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.Label("Название", htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.Label(Resources.Resource.Title, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
 
                         @Html.EditorFor(model => model.title, new { htmlAttributes = new { @class = "form-control" } })
@@ -37,28 +37,28 @@ else
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.Label("Тема", htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.Label(Resources.Resource.Theme, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
                         @Html.EditorFor(model => model.teme, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.teme, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.Label("Тэги", htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.Label(Resources.Resource.Тags, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
                         @Html.EditorFor(model => model.tags, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.tags, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.Label("Описание", htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.Label(Resources.Resource.Description, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
                         @Html.TextAreaFor(model => model.description, 4, 105, new { htmlAttributes = new { @class = "form-control" } })
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" name="action:CreatePost" value="Сохранить" class="btn btn-warning" />
+                        <input type="submit" name="action:CreatePost" value=@Resources.Resource.Save class="btn btn-warning" />
                     </div>
                 </div>
             </div>

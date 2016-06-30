@@ -35,25 +35,24 @@
     <hr>
     <div class="col-sm-5">
 
-        <dt>Автор:</dt>
+        <dt>@Resources.Resource.Author:</dt>
         <dd>
             @Html.ActionLink(Model.UserEmail, "UserPage", "Account", new { id = Model.post.UserId }, null)
 
-            <dt>Тема:</dt>
+            <dt>@Resources.Resource.Theme:</dt>
         <dd>
             @Model.post.teme
         </dd>
-        <dt>Тэги:</dt>
+        <dt>@Resources.Resource.Тags:</dt>
         <dd>
             @Model.post.tags
         </dd>
 
-        <dt>Описание:</dt>
+        <dt>@Resources.Resource.Description:</dt>
         <dd>
             @Model.post.description
         </dd>
-        <dt>Рейтинг:</dt>
-        <dt>Дата создания:</dt>
+        <dt>@Resources.Resource.Date:</dt>
         <dd>
             @Model.post.time
         </dd>
@@ -66,7 +65,7 @@
                 <input type="hidden" name="id" value=@Model.post.id />
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <input id="ButtonChange" type="submit" class="btn btn-default" value="Отредактировать пост" />
+                        <input id="ButtonChange" type="submit" class="btn btn-default" value=@Resources.Resource.ChangePost />
                     </div>
                 </div>
             }
@@ -75,7 +74,7 @@
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input id="ButtonDelete" type="button" value="Удалить пост" class="btn btn-danger" onclick="if (confirm('Вы уверен, что хотите удалить этот пост?')) location.href='@Url.Action("DeletePost", "Post", new { id = Model.post.id })'" />
+                    <input id="ButtonDelete" type="button" value=@Resources.Resource.DeletePost class="btn btn-danger" onclick="if (confirm(@Resources.Resource.ConfirmText)) location.href='@Url.Action("DeletePost", "Post", new { id = Model.post.id })'" />
                 </div>
             </div>
         }
@@ -122,7 +121,6 @@
                    placeholder="add new comment here" id="Add">
             <input class="btn-primary" type="submit" value="add">
         </form>
-        <form ng-submit="todoList.GetComments()"></form>
         <dl class="dl-horizontal">
             <dd ng-repeat="todo in todoList.todos">
                 <div class="thumbnail">

@@ -93,7 +93,6 @@ $(document).ready(function () {
     function download() {
         jData = JSON.stringify(canvas);
         var dataUrl = canvas.toDataURL('image/jpeg');
-        this.href = dataUrl;
         console.log(jData);
         var Data = new FormData();
         Data.append("json",jData)

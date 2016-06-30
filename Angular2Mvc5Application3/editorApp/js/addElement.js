@@ -18,7 +18,7 @@ $(document).ready(function () {
         function drawLine(coords) {
             return new fabric.Line(coords, {
                 stroke: 'black',
-                strokeWidth: 3,
+                strokeWidth: 4,
                 selectable: true,
                 hasControls: false,
                 hasBorders: false
@@ -28,12 +28,12 @@ $(document).ready(function () {
 
         var group = new fabric.Group([
             //makeRectangle(),
-            drawLine([newX - 100, newTop, newX - 50, newTop]), //left connector
-            drawLine([newX - 50, newTop - 30, newX - 50, newTop + 30]),  //left vertical
-            drawLine([newX + 50, newTop - 30, newX + 50, newTop + 30]), //right vertical
-            drawLine([newX - 50, newTop - 30, newX + 50, newTop - 30]), // top horiz
-            drawLine([newX - 50, newTop + 30, newX + 50, newTop + 30]), //bottom horiz
-            drawLine([newX + 50, newTop, newX + 100, newTop]) //right connector
+            drawLine([newX - 80, newTop, newX - 40, newTop]), //left connector
+            drawLine([newX - 40, newTop - 20, newX - 40, newTop + 20]),  //left vertical
+            drawLine([newX + 40, newTop - 20, newX + 40, newTop + 20]), //right vertical
+            drawLine([newX - 40, newTop - 20, newX + 40, newTop - 20]), // top horiz
+            drawLine([newX - 40, newTop + 20, newX + 40, newTop + 20]), //bottom horiz
+            drawLine([newX + 40, newTop, newX + 80, newTop]) //right connector
         ], {});
         group.setControlsVisibility({
             mt: false, // middle top disable
@@ -47,6 +47,21 @@ $(document).ready(function () {
         });
         canvas.add(group);
     }
+    function newText(x, y) {
+        var newX = Math.round(x / step) * step;
+        var newTop = Math.round(y / step) * step - 50;
+        var text = new fabric.IText('  ', {
+            fontFamily: 'arial',
+            fontSize: 24,
+            left: newX,
+            top: newTop,
+            hasControls: false,
+            hasBorders: true,
+            selectable: true
+        });
+
+        canvas.add(text);
+    }
 
 
     function newCircle(x, y) {
@@ -56,7 +71,7 @@ $(document).ready(function () {
         function drawLine(coords) {
             return new fabric.Line(coords, {
                 stroke: 'black',
-                strokeWidth: 3,
+                strokeWidth: 4,
                 selectable: true,
                 hasControls: false,
                 hasBorders: false
@@ -64,10 +79,10 @@ $(document).ready(function () {
         }
 
         var group = new fabric.Group([
-            drawLine([newX - 60, newTop, newX - 10, newTop]), //left connector
+            drawLine([newX - 80, newTop, newX - 10, newTop]), //left connector
             drawLine([newX - 10, newTop - 30, newX - 10, newTop + 30]),  //left vertical
             drawLine([newX + 10, newTop - 30, newX + 10, newTop + 30]), //right vertical
-            drawLine([newX + 10, newTop, newX + 60, newTop]) //right connector
+            drawLine([newX + 10, newTop, newX + 80, newTop]) //right connector
         ], {});
 
         group.setControlsVisibility({
@@ -92,7 +107,7 @@ $(document).ready(function () {
         function drawLine(coords) {
             return new fabric.Line(coords, {
                 stroke: 'black',
-                strokeWidth: 3,
+                strokeWidth: 4,
                 selectable: true,
                 hasControls: false,
                 hasBorders: false
@@ -103,7 +118,7 @@ $(document).ready(function () {
                 left: newX,
                 top: newTop,
                 fill: "rgba(0, 0, 0, 0)",
-                strokeWidth: 2,
+                strokeWidth: 4,
                 stroke: 'black',
                 radius: 40
             });
@@ -112,10 +127,10 @@ $(document).ready(function () {
         var group = new fabric.Group([
             drawCircle(), //left connector
             drawLine([newX, newTop - 30, newX, newTop + 30]),  // vertical
-            drawLine([newX, newTop, newX + 29, newTop - 29]), //emitter
-            drawLine([newX, newTop, newX + 29, newTop + 29]), //collector
-            drawLine([newX + 29, newTop - 29, newX + 29, newTop - 60]), //emitter connect
-            drawLine([newX + 29, newTop + 29, newX + 29, newTop + 60]), //collector connect
+            drawLine([newX, newTop, newX + 30, newTop - 30]), //emitter
+            drawLine([newX, newTop, newX + 30, newTop + 30]), //collector
+            drawLine([newX + 30, newTop - 28, newX + 30, newTop - 60]), //emitter connect
+            drawLine([newX + 30, newTop + 28, newX + 30, newTop + 60]), //collector connect
             drawLine([newX - 60, newTop, newX, newTop]) //base connector
         ], {});
         group.setControlsVisibility({
@@ -139,7 +154,7 @@ $(document).ready(function () {
         function drawLine(coords) {
             return new fabric.Line(coords, {
                 stroke: 'black',
-                strokeWidth: 3,
+                strokeWidth: 4,
                 selectable: true,
                 hasControls: false,
                 hasBorders: false
@@ -154,7 +169,7 @@ $(document).ready(function () {
                 startAngle: 0,
                 endAngle: Math.PI,
                 fill: "rgba(0, 0, 0, 0)",
-                strokeWidth: 2,
+                strokeWidth: 4,
                 stroke: 'black',
             });
         }
@@ -167,7 +182,7 @@ $(document).ready(function () {
                 startAngle: 0,
                 endAngle: Math.PI,
                 fill: "rgba(0, 0, 0, 0)",
-                strokeWidth: 2,
+                strokeWidth: 4,
                 stroke: 'black',
             });
         }
@@ -180,7 +195,7 @@ $(document).ready(function () {
                 startAngle: 0,
                 endAngle: Math.PI,
                 fill: "rgba(0, 0, 0, 0)",
-                strokeWidth: 2,
+                strokeWidth: 4,
                 stroke: 'black',
             });
         }
@@ -193,7 +208,7 @@ $(document).ready(function () {
                 startAngle: 0,
                 endAngle: Math.PI,
                 fill: "rgba(0, 0, 0, 0)",
-                strokeWidth: 2,
+                strokeWidth: 4,
                 stroke: 'black',
             });
         }
@@ -206,7 +221,7 @@ $(document).ready(function () {
                 startAngle: 0,
                 endAngle: Math.PI,
                 fill: "rgba(0, 0, 0, 0)",
-                strokeWidth: 2,
+                strokeWidth: 4,
                 stroke: 'black',
             });
         }
@@ -247,7 +262,7 @@ $(document).ready(function () {
         function drawLine(coords) {
             return new fabric.Line(coords, {
                 stroke: 'black',
-                strokeWidth: 3,
+                strokeWidth: 4,
                 selectable: true,
                 hasControls: false,
                 hasBorders: false
@@ -256,7 +271,7 @@ $(document).ready(function () {
 
         var group = new fabric.Group([
             //makeRectangle(),
-            drawLine([newX, newTop, newX + 50, newTop]), //
+            drawLine([newX, newTop, newX + 100, newTop]), //
 
         ], {});
         group.setControlsVisibility({
@@ -275,10 +290,10 @@ $(document).ready(function () {
 
 
     function createLine(x, y) {
-        var points = [x, y, x + 300, y];
+        var points = [x, y, x + 1000, y];
         return new fabric.Line(points, {
             stroke: 'black',
-            strokeWidth: 3,
+            strokeWidth: 4,
             selectable: true
         });
     }
@@ -286,9 +301,8 @@ $(document).ready(function () {
 
     function makeLine(coords) {
         return new fabric.Line(coords, {
-            fill: 'gray',
-            stroke: 'gray',
-            strokeWidth: 2,
+            stroke: 'black',
+            strokeWidth: 4,
             selectable: false
         });
     }
@@ -320,6 +334,9 @@ $(document).ready(function () {
                     break;
                 case "Harrow":
                     newArrow(options.e.clientX, options.e.clientY);
+                    break;
+                case "Htext":
+                    newText(options.e.clientX, options.e.clientY);
                     break;
                 default:
                     ;// do nothing

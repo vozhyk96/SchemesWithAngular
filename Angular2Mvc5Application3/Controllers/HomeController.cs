@@ -149,23 +149,38 @@ namespace Schemes.Controllers
 
         public ActionResult Index(int? id, string s = "")
         {
-            List<ViewPost> posts = new List<ViewPost>();
-            if (s == "")
+            /*if (s == "")
                 posts = Repository.GetaLLPosts();
-            else posts = Repository.FindPostsWithString(s);
+            else posts = Repository.FindPostsWithString(s);*/
             /*else
             {
                 LuceneRepository.BuildIndex();
                 int count;
                 posts = LuceneRepository.Search(s, out count);
             }*/
-
-            int page = id ?? 0;
+            
+            int page;
+            if (id == null)
+            {
+                page = 0;
+                Session["s"] = s;
+            }
+            else page = int.Parse(Session["Page"].ToString());
+                
+            List<ViewPost> posts = new List<ViewPost>();
+            int maxPages = Repository.GetNumberOfPosts()/pageSize + 1;
+            while ((posts.Count < pageSize)&&(page<=maxPages))
+            {
+                List<ViewPost> subposts = Repository.GetPostsSortedByDate(pageSize, page, Session["s"].ToString());
+                posts.AddRange(subposts);
+                page++;
+            }
+            Session["Page"] = page;
             if (Request.IsAjaxRequest())
             {
-                return PartialView("Tape", GetItemsPage(posts, page));
+                return PartialView("Tape", posts);
             }
-            return View(GetItemsPage(posts, page));
+            return View(posts);
         }
         private List<ViewPost> GetItemsPage(List<ViewPost> posts, int page = 1)
         {

@@ -117,10 +117,211 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Add" xml:space="preserve">
+    <value>Добавить</value>
+  </data>
+  <data name="AddPost" xml:space="preserve">
+    <value>Добавить пост</value>
+  </data>
+  <data name="AddScheme" xml:space="preserve">
+    <value>Добавить схему</value>
+  </data>
+  <data name="AnotherService" xml:space="preserve">
+    <value>Используйте для входа другую службу.</value>
+  </data>
+  <data name="Application" xml:space="preserve">
+    <value>Приложение</value>
+  </data>
+  <data name="Author" xml:space="preserve">
+    <value>Автор</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Назад</value>
+  </data>
+  <data name="Capasitor" xml:space="preserve">
+    <value>Конденсатор</value>
+  </data>
+  <data name="ChangeData" xml:space="preserve">
+    <value>Изменить данные</value>
+  </data>
+  <data name="ChangeFIO" xml:space="preserve">
+    <value>Изменить ФИО</value>
+  </data>
+  <data name="ChangeParametrs" xml:space="preserve">
+    <value>Изменение параметров учетной записи</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Изменить пароль</value>
+  </data>
+  <data name="ChangePost" xml:space="preserve">
+    <value>Отредактировать пост</value>
+  </data>
   <data name="ChooseLang" xml:space="preserve">
     <value>Выберите язык</value>
   </data>
-  <data name="registration" xml:space="preserve">
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>Подтвердите пароль</value>
+  </data>
+  <data name="ConfirmText" xml:space="preserve">
+    <value>Вы уверены, что хотите удалить этот пост?</value>
+  </data>
+  <data name="Control" xml:space="preserve">
+    <value>Управление</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Создать пароль</value>
+  </data>
+  <data name="CreateLocal" xml:space="preserve">
+    <value>Создать локальное имя входа</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Дата создания</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="DeleteAvatar" xml:space="preserve">
+    <value>Убрать аватарку</value>
+  </data>
+  <data name="DeletePost" xml:space="preserve">
+    <value>Удалить пост</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Адрес электронной почты</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Ошибка.</value>
+  </data>
+  <data name="Error2" xml:space="preserve">
+    <value>Во время обработки вашего запроса произошла ошибка.</value>
+  </data>
+  <data name="ErrorSigningIn" xml:space="preserve">
+    <value>Ошибка при входе</value>
+  </data>
+  <data name="Exelent" xml:space="preserve">
+    <value>Отлично</value>
+  </data>
+  <data name="FormChange" xml:space="preserve">
+    <value>Форма смены пароля</value>
+  </data>
+  <data name="Hello" xml:space="preserve">
+    <value>Здравствуйте,</value>
+  </data>
+  <data name="Induct" xml:space="preserve">
+    <value>Индуктивность</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Загрузка...</value>
+  </data>
+  <data name="Locked" xml:space="preserve">
+    <value>Заблокировано</value>
+  </data>
+  <data name="Locked2" xml:space="preserve">
+    <value>Эта учетная запись заблокирована. Попробуйте еще раз позже.</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Войти</value>
+  </data>
+  <data name="LoginR" xml:space="preserve">
+    <value>Войдите</value>
+  </data>
+  <data name="LogOut" xml:space="preserve">
+    <value>Выйти</value>
+  </data>
+  <data name="MainPage" xml:space="preserve">
+    <value>Главная страница</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name="NewAccount" xml:space="preserve">
+    <value>Создайте новую учетную запись</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Пароль</value>
+  </data>
+  <data name="PasswordChange" xml:space="preserve">
+    <value>Ваш пароль изменен.</value>
+  </data>
+  <data name="PasswordSet" xml:space="preserve">
+    <value>Пароль создан.</value>
+  </data>
+  <data name="Patronymic" xml:space="preserve">
+    <value>Отчество</value>
+  </data>
+  <data name="PersonalInformation" xml:space="preserve">
+    <value>Личая информация</value>
+  </data>
+  <data name="Please" xml:space="preserve">
+    <value>Пожалуйста</value>
+  </data>
+  <data name="Poor" xml:space="preserve">
+    <value>Ужасно</value>
+  </data>
+  <data name="Ready" xml:space="preserve">
+    <value>Готово</value>
+  </data>
+  <data name="Registrartion" xml:space="preserve">
     <value>Регистрация</value>
+  </data>
+  <data name="RegNewUser" xml:space="preserve">
+    <value>Регистрация нового пользователя</value>
+  </data>
+  <data name="RememberMe" xml:space="preserve">
+    <value>Запомнить меня</value>
+  </data>
+  <data name="Resistor" xml:space="preserve">
+    <value>Резистор</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Поиск</value>
+  </data>
+  <data name="Surname" xml:space="preserve">
+    <value>Фамилия</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>Текст</value>
+  </data>
+  <data name="Thanks" xml:space="preserve">
+    <value>Спасибо за ваш голос!</value>
+  </data>
+  <data name="Theme" xml:space="preserve">
+    <value>Тема</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="ToRate" xml:space="preserve">
+    <value>для выставления рейтинга</value>
+  </data>
+  <data name="Transistor" xml:space="preserve">
+    <value>Транзистор</value>
+  </data>
+  <data name="UnableEnter" xml:space="preserve">
+    <value>Не удалось войти через службу</value>
+  </data>
+  <data name="UseALoaclAccount" xml:space="preserve">
+    <value>Используйте локальную учетную запись для входа</value>
+  </data>
+  <data name="UserAvatar" xml:space="preserve">
+    <value>Аватарка пользователя</value>
+  </data>
+  <data name="UserPage" xml:space="preserve">
+    <value>Страница пользователя</value>
+  </data>
+  <data name="UserPosts" xml:space="preserve">
+    <value>Посты пользователя</value>
+  </data>
+  <data name="Wire" xml:space="preserve">
+    <value>Провод</value>
+  </data>
+  <data name="Тags" xml:space="preserve">
+    <value>Тэги</value>
   </data>
 </root>
