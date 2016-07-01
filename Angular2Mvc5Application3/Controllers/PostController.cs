@@ -27,15 +27,9 @@ namespace Schemes.Controllers
             if ((id == 0) && (UserId == null))
             {
                 if (Session["id"] != null)
-                {
                     id = int.Parse(Session["id"].ToString());
-                    Session["id"] = null;
-                }
                 if (Session["UserId"] != null)
-                {
                     UserId = Session["UserId"].ToString();
-                    Session["UserId"] = null;
-                }
             }
             if (id == 0)
             {
@@ -46,11 +40,13 @@ namespace Schemes.Controllers
                     post.image = temp.Image;
                 }
                 Session["UserId"] = UserId;
+                Session["id"] = null;
             }
             if (UserId == null)
             {
                 post = Repository.GetPostById(id);
                 Session["id"] = id;
+                Session["UserId"] = null;
             }
 
             post = GutFromSession(post);
