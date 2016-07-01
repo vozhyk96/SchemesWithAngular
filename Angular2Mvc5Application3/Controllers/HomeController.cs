@@ -146,8 +146,13 @@ namespace Schemes.Controllers
             return Json("<br />You rated " + r + " star(s), thanks !");
         }
 
-        public ActionResult Index(int? id, string s = "")
+        public ActionResult Index(int? id, string s = "", int tagId = 0)
         {
+            if(tagId != 0)
+            {
+                List<ViewPost> tagposts = Repository.GetPostsOfTag(tagId);
+                return View(tagposts);
+            }
             int page;
             if (id == null)
             {

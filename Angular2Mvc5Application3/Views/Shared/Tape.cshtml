@@ -16,7 +16,14 @@
                     Автор:  @Html.ActionLink(post.UserEmail, "UserPage", "Account", new { id = post.post.UserId }, null)
                 </dd>
                 <dd>
-                    @post.post.tags
+                    @foreach (var tag in post.tags)
+                    {
+                        @Html.ActionLink("#" + tag.tagName, "Index", "Home", new { tagId = tag.id }, null)
+                        if (tag != post.tags[post.tags.Count - 1])
+                        {
+                            @:,
+                        }
+                    }
                 </dd>
                 <dd>
                     @post.post.description

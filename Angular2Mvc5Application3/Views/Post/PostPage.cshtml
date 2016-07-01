@@ -45,7 +45,14 @@
         </dd>
         <dt>@Resources.Resource.Тags:</dt>
         <dd>
-            @Model.post.tags
+            @foreach (var tag in Model.tags)
+            {
+                @Html.ActionLink("#" + tag.tagName, "Index", "Home", new { tagId = tag.id }, null)
+                if (tag != Model.tags[Model.tags.Count - 1])
+                {
+                    @:,
+                }
+            }
         </dd>
 
         <dt>@Resources.Resource.Description:</dt>
@@ -121,6 +128,7 @@
                    placeholder="add new comment here" id="Add">
             <input class="btn-primary" type="submit" value="add">
         </form>
+
         <dl class="dl-horizontal">
             <dd ng-repeat="todo in todoList.todos">
                 <div class="thumbnail">

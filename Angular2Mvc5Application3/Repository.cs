@@ -386,14 +386,14 @@ namespace Schemes
         }
 
 
-        static private List<Tag> FindNeedTags(int postid)
+        static public List<Tag> FindNeedTags(int postid)
         {
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
                 List<Tag> needTags = new List<Tag>();
                 foreach (var tag in db.Tags)
                 {
-                    if (tag.idsOfPosts.Contains(postid.ToString()))
+                    if ((tag.idsOfPosts.Contains("," + postid.ToString() + ","))||(postid.ToString() == tag.idsOfPosts.Split(',')[0])|| (postid.ToString() == tag.idsOfPosts.Split(',')[tag.idsOfPosts.Split(',').Length-1]))
                         needTags.Add(tag);
                 }
                 return needTags;
@@ -443,6 +443,21 @@ namespace Schemes
                         return tag.id;
                 }
                 return 0;
+            }
+        }
+
+        static public List<ViewPost> GetPostsOfTag(int tagId)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                Tag tag = db.Tags.Find(tagId);
+                List<ViewPost> result = new List<ViewPost>();
+                foreach (var sid in tag.idsOfPosts.Split(','))
+                {
+                    Post post = db.Posts.Find(int.Parse(sid));
+                    result.Add(new ViewPost(post));
+                }
+                return result;
             }
         }
     }
