@@ -279,6 +279,17 @@ namespace Schemes
 
         }
 
+        static public int AddLike(int id)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                Comment comment = db.Comment.Find(id);
+                comment.Likes++;
+                db.SaveChanges();
+                return comment.Likes;
+            }
+        }
+
         static private double GetRaiting(string Model)
         {
             if (Model == null)
