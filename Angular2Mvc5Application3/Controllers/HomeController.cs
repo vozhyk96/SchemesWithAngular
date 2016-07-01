@@ -148,16 +148,19 @@ namespace Schemes.Controllers
 
         public ActionResult Index(int? id, string s = "", int tagId = 0)
         {
-            if(tagId != 0)
+            List<ViewPost> tagposts = new List<ViewPost>();
+            if (tagId != 0)
             {
-                List<ViewPost> tagposts = Repository.GetPostsOfTag(tagId);
+                tagposts = Repository.GetPostsOfTag(tagId);
                 return View(tagposts);
             }
+            
             int page;
             if (id == null)
             {
                 page = 0;
                 Session["s"] = s;
+                Session["ByTags"] = null;
             }
             else page = int.Parse(Session["Page"].ToString());
                 
@@ -165,9 +168,17 @@ namespace Schemes.Controllers
             int maxPages = Repository.GetNumberOfPosts()/pageSize + 1;
             while ((posts.Count < pageSize)&&(page<=maxPages))
             {
-                List<ViewPost> subposts = Repository.GetPostsSortedByDate(pageSize, page, Session["s"].ToString());
-                posts.AddRange(subposts);
-                page++;
+                if (tagposts.Count > 0)
+                {
+                    posts = tagposts;
+                    page = maxPages + 1;
+                }
+                else
+                {
+                    List<ViewPost> subposts = Repository.GetPostsSortedByDate(pageSize, page, Session["s"].ToString());
+                    posts.AddRange(subposts);
+                    page++;
+                }
             }
             Session["Page"] = page;
             if (Request.IsAjaxRequest())
