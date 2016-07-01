@@ -460,5 +460,14 @@ namespace Schemes
                 return result;
             }
         }
+
+        static public List<Tag> GetAllTags()
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                List<Tag> tags = db.Tags.OrderByDescending(t => t.Count).ToList();
+                return tags;
+            }
+        }
     }
 }

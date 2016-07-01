@@ -451,6 +451,7 @@
     <Content Include="Views\Post\EditorApp.cshtml" />
     <Content Include="Views\Shared\_VoteNow.cshtml" />
     <Content Include="Views\Shared\_VoteShow.cshtml" />
+    <Content Include="Views\Shared\TagCloud.cshtml" />
     <None Include="_typingsrc" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

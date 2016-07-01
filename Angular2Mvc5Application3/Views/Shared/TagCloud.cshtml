@@ -1,0 +1,41 @@
+﻿@using Schemes.Models.DbModels;
+@{ 
+
+    double[] minRange = new double[6];
+    List<Tag> tags = Repository.GetAllTags();
+    minRange[0] = tags[0].Count;
+    double k = minRange[0] / 6;
+    minRange[1] = minRange[0] - k;
+    minRange[2] = minRange[1] - k;
+    minRange[3] = minRange[2] - k;
+    minRange[4] = minRange[3] - k;
+    minRange[5] = minRange[4] - k;
+}
+@foreach (var tag in tags)
+{
+    if (tag.Count >= minRange[0])
+    {
+        @Html.ActionLink("#" + tag.tagName, "Index", "Home", new { tagId = tag.id }, new { style = "font-size:30px;" })
+    }
+    else if (tag.Count >= minRange[1])
+    {
+        @Html.ActionLink("#" + tag.tagName, "Index", "Home", new { tagId = tag.id }, new { style = "font-size:25px;" })
+    }
+    else if (tag.Count >= minRange[2])
+    {
+        @Html.ActionLink("#" + tag.tagName, "Index", "Home", new { tagId = tag.id }, new { style = "font-size:20px;" })
+    }
+    else if (tag.Count >= minRange[3])
+    {
+        @Html.ActionLink("#" + tag.tagName, "Index", "Home", new { tagId = tag.id }, new { style = "font-size:15px;" })
+    }
+    else if (tag.Count >= minRange[4])
+    {
+        @Html.ActionLink("#" + tag.tagName, "Index", "Home", new { tagId = tag.id }, new { style = "font-size:10px;" })
+    }
+    else if (tag.Count >= minRange[5])
+    {
+        @Html.ActionLink("#" + tag.tagName, "Index", "Home", new { tagId = tag.id }, new { style = "font-size:5px;" })
+    }
+    else {@Html.ActionLink("#" + tag.tagName, "Index", "Home", new { tagId = tag.id }, new { style = "font-size:2px;" })}
+}
