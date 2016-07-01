@@ -17,8 +17,6 @@ namespace Schemes.Controllers
     [Culture]
     public class PostController : Controller
     {
-
-        
         // GET: Post
         [HttpGet]
         public ActionResult CreatePost(int id = 0, string UserId = null)
@@ -84,6 +82,7 @@ namespace Schemes.Controllers
         [MultipleButton(Name = "action", Argument = "CreatePost")]
         public ActionResult CreatePost(Post model)
         {
+            model = Parse(model);
             int id = 0;
             if (model.id == 0)
             {
@@ -105,6 +104,20 @@ namespace Schemes.Controllers
             return RedirectToAction("PostPage", "Post", new { id = id });
         }
 
+        private Post Parse(Post post)
+        {
+            if (post.title == null)
+                post.title = String.Format("{0}",Resources.Resource.Post);
+            if (post.teme == null)
+                post.teme = "";
+            if (post.tags == null)
+                post.tags = "";
+            else if (post.tags[0] == '#')
+                post.tags = post.tags.Remove(0, 1);
+            if (post.description == null)
+                post.description = "";
+            return post;
+        }
 
         public ActionResult PostPage(int id)
         {
@@ -201,6 +214,7 @@ namespace Schemes.Controllers
         {
             int PostId = GetPostIdFromUrl(url);
             List<ViewComment> comments = Repository.GetComments(PostId);
+            comments.Reverse();
             return Json(comments, JsonRequestBehavior.AllowGet);
 
         }

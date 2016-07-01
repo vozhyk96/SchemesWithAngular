@@ -300,3 +300,6 @@ C:\y\SchemesWithAngular-master\Angular2Mvc5Application3\obj\Debug\Angular2Mvc5Ap
 C:\y\SchemesWithAngular-master\Angular2Mvc5Application3\obj\Debug\en\Angular2Mvc5Application3.resources.dll
 C:\y\SchemesWithAngular-master\Angular2Mvc5Application3\obj\Debug\Angular2Mvc5Application3.dll
 C:\y\SchemesWithAngular-master\Angular2Mvc5Application3\obj\Debug\Angular2Mvc5Application3.pdb
+D:\Itransition\Angular2Mvc5Application3\Angular2Mvc5Application3\obj\Debug\Angular2Mvc5Application3.Migrations.m6.resources
+D:\Itransition\Angular2Mvc5Application3\Angular2Mvc5Application3\obj\Debug\Angular2Mvc5Application3.Migrations.m7.resources
+D:\Itransition\Angular2Mvc5Application3\Angular2Mvc5Application3\obj\Debug\Angular2Mvc5Application3.Migrations.m8.resources

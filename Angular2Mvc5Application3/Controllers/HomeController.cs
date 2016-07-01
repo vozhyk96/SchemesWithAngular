@@ -31,7 +31,6 @@ namespace Schemes.Controllers
                 cookie.Value = lang;   // если куки уже установлено, то обновляем значение
             else
             {
-
                 cookie = new HttpCookie("lang");
                 cookie.HttpOnly = false;
                 cookie.Value = lang;
@@ -149,16 +148,6 @@ namespace Schemes.Controllers
 
         public ActionResult Index(int? id, string s = "")
         {
-            /*if (s == "")
-                posts = Repository.GetaLLPosts();
-            else posts = Repository.FindPostsWithString(s);*/
-            /*else
-            {
-                LuceneRepository.BuildIndex();
-                int count;
-                posts = LuceneRepository.Search(s, out count);
-            }*/
-            
             int page;
             if (id == null)
             {

@@ -324,4 +324,7 @@
   <data name="Тags" xml:space="preserve">
     <value>Тэги</value>
   </data>
+  <data name="Post" xml:space="preserve">
+    <value>Пост</value>
+  </data>
 </root>

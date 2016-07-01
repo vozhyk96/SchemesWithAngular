@@ -58,9 +58,11 @@ namespace Schemes
         {
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
+                post.tags = post.tags.Insert(0, "#");
                 db.Posts.Add(post);
                 db.SaveChanges();
                 int id = post.id;
+                AddTags(post.tags, post.id);
                 return id;
             }
         }
@@ -71,12 +73,14 @@ namespace Schemes
         {
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
+                post.tags = post.tags.Insert(0, "#");
                 Post newPost = db.Posts.Find(post.id);
                 newPost.title = post.title;
                 newPost.teme = post.teme;
                 newPost.tags = post.tags;
                 newPost.description = post.description;
                 db.SaveChanges();
+                AddTags(post.tags, post.id);
             }
         }
 
@@ -313,11 +317,133 @@ namespace Schemes
         static public int GetNumberOfPosts()
         {
             using (ApplicationDbContext db = new ApplicationDbContext())
-
             {
                 return db.Posts.Count();
             }
         }
 
+        static private void AddTags(string strtags, int postid)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                if (strtags[0] == '#')
+                    strtags = strtags.Remove(0, 1);
+                DeleteTags(postid);
+                string[] tags = strtags.Split('#');
+                foreach (var tag in tags)
+                {
+                    string ptag = ParseTag(tag);
+                    int id = Contains(ptag);
+                    if(id > 0)
+                    {
+                        UpdateTag(id, postid);
+                    }
+                    else
+                    {
+                        AddTag(ptag, postid);
+                    }
+                }
+            }
+        }
+
+        static private void DeleteTags(int postid)
+        {
+            List<Tag> tags = FindNeedTags(postid);
+            foreach (var tag in tags)
+            {
+                string s = String.Format(",{0}", postid.ToString());
+                if (tag.Count > 1)
+                {
+                    tag.idsOfPosts = tag.idsOfPosts.Replace(s, "");
+                    tag.idsOfPosts = tag.idsOfPosts.Replace(postid.ToString() + ",", "");
+                    if(tag.idsOfPosts[0]==',')
+                        tag.idsOfPosts = tag.idsOfPosts.Remove(0, 1);
+                    DeleteIdsFromTag(tag.id, tag.idsOfPosts);
+                }
+                else DeleteTag(tag.id);
+            }
+        }
+
+        static private void DeleteTag(int id)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                Tag tag = db.Tags.Find(id);
+                db.Tags.Remove(tag);
+                db.SaveChanges();
+            }
+        }
+
+        static private void DeleteIdsFromTag(int id, string idsOfPosts)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                Tag tag = db.Tags.Find(id);
+                tag.idsOfPosts = idsOfPosts;
+                tag.Count = idsOfPosts.Split(',').Length;
+                db.SaveChanges();
+            }
+        }
+
+
+        static private List<Tag> FindNeedTags(int postid)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                List<Tag> needTags = new List<Tag>();
+                foreach (var tag in db.Tags)
+                {
+                    if (tag.idsOfPosts.Contains(postid.ToString()))
+                        needTags.Add(tag);
+                }
+                return needTags;
+            }
+        }
+
+        static private void UpdateTag(int id, int postid)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                Tag mtag = db.Tags.Find(id);
+                mtag.idsOfPosts += String.Format(",{0}", postid);
+                mtag.Count++;
+                db.SaveChanges();
+            }
+        }
+
+        static private void AddTag(string ptag, int postid)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                Tag mtag = new Tag();
+                mtag.tagName = ptag;
+                mtag.idsOfPosts = postid.ToString();
+                mtag.Count = 1;
+                db.Tags.Add(mtag);
+                db.SaveChanges();
+            }
+        }
+
+        static private string ParseTag(string tag)
+        {
+            if(tag[tag.Length-1] == ' ')
+            {
+                tag = tag.Substring(0, tag.Length - 1);
+            }
+            return tag;
+        }
+
+        static private int Contains(string stag)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                foreach (var tag in db.Tags)
+                {
+                    if (tag.tagName == stag)
+                        return tag.id;
+                }
+                return 0;
+            }
+        }
     }
 }

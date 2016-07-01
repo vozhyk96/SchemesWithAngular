@@ -1,8 +1,9 @@
 ﻿angular.module('todoApp', [])
-  .controller('TodoListController', function () {
+  .controller('TodoListController', function ($interval) {
       var todoList = this;
       todoList.todos = [];
       var Data = new FormData();
+      $interval(todoList.addTodo, 10);
       Data.append("url", document.URL)
       $.ajax({
           type: "POST",
@@ -27,7 +28,7 @@
               contentType: false,
               data: Data,
               success: function (response) {
-                  todoList.todos.push(response)
+                  todoList.todos.unshift(response)
               },
               
           });

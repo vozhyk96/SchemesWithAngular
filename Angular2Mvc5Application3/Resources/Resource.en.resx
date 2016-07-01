@@ -324,4 +324,7 @@
   <data name="Тags" xml:space="preserve">
     <value>Тags</value>
   </data>
+  <data name="Post" xml:space="preserve">
+    <value>Post</value>
+  </data>
 </root>

@@ -264,10 +264,23 @@
     <Compile Include="Migrations\201606291528586_m5.Designer.cs">
       <DependentUpon>201606291528586_m5.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607011108115_m6.cs" />
+    <Compile Include="Migrations\201607011108115_m6.Designer.cs">
+      <DependentUpon>201607011108115_m6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607011136183_m7.cs" />
+    <Compile Include="Migrations\201607011136183_m7.Designer.cs">
+      <DependentUpon>201607011136183_m7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607011304078_m8.cs" />
+    <Compile Include="Migrations\201607011304078_m8.Designer.cs">
+      <DependentUpon>201607011304078_m8.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AppDbInitializer.cs" />
     <Compile Include="Models\DbModels\Comment.cs" />
+    <Compile Include="Models\DbModels\Tag.cs" />
     <Compile Include="Models\DbModels\Temp.cs" />
     <Compile Include="Models\DbModels\VoteLog.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -522,6 +535,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606291528586_m5.resx">
       <DependentUpon>201606291528586_m5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607011108115_m6.resx">
+      <DependentUpon>201607011108115_m6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607011136183_m7.resx">
+      <DependentUpon>201607011136183_m7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607011304078_m8.resx">
+      <DependentUpon>201607011304078_m8.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Resource.en.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

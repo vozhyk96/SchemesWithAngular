@@ -39,5 +39,6 @@ namespace Schemes.Models
         public DbSet<Temp> Temp { get; set; }
         public DbSet<VoteLog> VoteLog { get; set; }
         public DbSet<Comment> Comment { get; set; }
+        public DbSet<Tag> Tags { get; set; }
     }
 }
