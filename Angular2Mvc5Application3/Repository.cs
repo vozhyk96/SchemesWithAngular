@@ -59,6 +59,7 @@ namespace Schemes
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
                 post.tags = post.tags.Insert(0, "#");
+                post.rating = GetRaiting(post.Votes);
                 db.Posts.Add(post);
                 db.SaveChanges();
                 int id = post.id;
@@ -79,6 +80,7 @@ namespace Schemes
                 newPost.teme = post.teme;
                 newPost.tags = post.tags;
                 newPost.description = post.description;
+                newPost.rating = GetRaiting(newPost.Votes);
                 db.SaveChanges();
                 AddTags(post.tags, post.id);
             }
@@ -277,26 +279,97 @@ namespace Schemes
 
         }
 
-        static public List<ViewPost> GetPostsSortedByDate(int pageSize, int page, string s = "")
+        static private double GetRaiting(string Model)
+        {
+            if (Model == null)
+                return 0;
+            Single m_Average = 0;
+
+            Single m_totalNumberOfVotes = 0;
+            Single m_totalVoteCount = 0;
+            Single m_currentVotesCount = 0;
+            double m_inPercent = 0;
+            var thisVote = string.Empty;
+
+            if (Model.Length > 0)
+            {
+                // calculate total votes now
+                string[] votes = Model.Split(',');
+                for (int i = 0; i < votes.Length; i++)
+                {
+                    m_currentVotesCount = int.Parse(votes[i]);
+                    m_totalNumberOfVotes = m_totalNumberOfVotes + m_currentVotesCount;
+                    m_totalVoteCount = m_totalVoteCount + (m_currentVotesCount * (i + 1));
+                }
+
+                m_Average = m_totalVoteCount / m_totalNumberOfVotes;
+                m_inPercent = (m_Average * 100) / 5;
+                m_inPercent = Math.Round(m_inPercent);
+                return m_inPercent;
+            }
+            return 0;
+        }
+
+        static public List<ViewPost> GetPostsSorted(int pageSize, int page, string sort, string s = "")
+        {
+            List<Post> posts = new List<Post>();
+            switch (sort)
+            {
+                case "DateUp": posts = SortByDateUp(pageSize, page); break;
+                case "DateDown": posts = SortByDateDown(pageSize, page); break;
+                case "RateUp": posts = SortByRateUp(pageSize, page); break;
+                case "RateDown": posts = SortByRateDown(pageSize, page); break;
+                case "": posts = SortByDateDown(pageSize, page); break;
+            }
+            
+            if (s != "")
+            {
+                List<Post> subposts = GetPostsWithSubstring(posts, s);
+                posts = subposts;
+            }
+
+
+            List<ViewPost> result = new List<ViewPost>();
+            foreach (var post in posts)
+            {
+                ViewPost vpost = new ViewPost(post);
+                result.Add(vpost);
+            }
+            return result;
+        }
+
+        static private List<Post> SortByDateDown(int pageSize, int page)
         {
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
                 var itemsToSkip = page * pageSize;
-                List<Post> posts = db.Posts.OrderByDescending(t => t.time).Skip(itemsToSkip).Take(pageSize).ToList();
-                if (s != "")
-                {
-                    List<Post> subposts = GetPostsWithSubstring(posts, s);
-                    posts = subposts;
-                }
-                    
-                
-                List<ViewPost> result = new List<ViewPost>();
-                foreach (var post in posts)
-                {
-                    ViewPost vpost = new ViewPost(post);
-                    result.Add(vpost);
-                }
-                return result;
+                return db.Posts.OrderByDescending(t => t.time).Skip(itemsToSkip).Take(pageSize).ToList();
+            }
+        }
+        static private List<Post> SortByDateUp(int pageSize, int page)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                var itemsToSkip = page * pageSize;
+                return db.Posts.OrderBy(t => t.time).Skip(itemsToSkip).Take(pageSize).ToList();
+            }
+        }
+
+        static private List<Post> SortByRateUp(int pageSize, int page)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                var itemsToSkip = page * pageSize;
+                return db.Posts.OrderBy(t => t.rating).Skip(itemsToSkip).Take(pageSize).ToList();
+            }
+        }
+
+        static private List<Post> SortByRateDown(int pageSize, int page)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                var itemsToSkip = page * pageSize;
+                return db.Posts.OrderByDescending(t => t.rating).Skip(itemsToSkip).Take(pageSize).ToList();
             }
         }
 

@@ -146,8 +146,16 @@ namespace Schemes.Controllers
             return Json("<br />You rated " + r + " star(s), thanks !");
         }
 
-        public ActionResult Index(int? id, string s = "", int tagId = 0)
+        public ActionResult Index(int? id, string s = "", int tagId = 0, string sort = "")
         {
+            if(Session["Sort"]==null)
+            {
+                Session["Sort"] = sort;
+            }
+            if(sort != "")
+            {
+                Session["Sort"] = sort;
+            }
             List<ViewPost> tagposts = new List<ViewPost>();
             if (tagId != 0)
             {
@@ -175,7 +183,7 @@ namespace Schemes.Controllers
                 }
                 else
                 {
-                    List<ViewPost> subposts = Repository.GetPostsSortedByDate(pageSize, page, Session["s"].ToString());
+                    List<ViewPost> subposts = Repository.GetPostsSorted(pageSize, page, Session["Sort"].ToString(), Session["s"].ToString());
                     posts.AddRange(subposts);
                     page++;
                 }
@@ -187,6 +195,8 @@ namespace Schemes.Controllers
             }
             return View(posts);
         }
+
+
         private List<ViewPost> GetItemsPage(List<ViewPost> posts, int page = 1)
         {
             var itemsToSkip = page * pageSize;
