@@ -240,53 +240,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="LuceneRepository.cs" />
-    <Compile Include="Migrations\201606211143266_InitialCreate.cs" />
-    <Compile Include="Migrations\201606211143266_InitialCreate.Designer.cs">
-      <DependentUpon>201606211143266_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606241405031_m1.cs" />
-    <Compile Include="Migrations\201606241405031_m1.Designer.cs">
-      <DependentUpon>201606241405031_m1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606241408358_m2.cs" />
-    <Compile Include="Migrations\201606241408358_m2.Designer.cs">
-      <DependentUpon>201606241408358_m2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606282055089_m3.cs" />
-    <Compile Include="Migrations\201606282055089_m3.Designer.cs">
-      <DependentUpon>201606282055089_m3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606291437162_m4.cs" />
-    <Compile Include="Migrations\201606291437162_m4.Designer.cs">
-      <DependentUpon>201606291437162_m4.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606291528586_m5.cs" />
-    <Compile Include="Migrations\201606291528586_m5.Designer.cs">
-      <DependentUpon>201606291528586_m5.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201607011108115_m6.cs" />
-    <Compile Include="Migrations\201607011108115_m6.Designer.cs">
-      <DependentUpon>201607011108115_m6.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201607011136183_m7.cs" />
-    <Compile Include="Migrations\201607011136183_m7.Designer.cs">
-      <DependentUpon>201607011136183_m7.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201607011304078_m8.cs" />
-    <Compile Include="Migrations\201607011304078_m8.Designer.cs">
-      <DependentUpon>201607011304078_m8.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201607012008097_m9.cs" />
-    <Compile Include="Migrations\201607012008097_m9.Designer.cs">
-      <DependentUpon>201607012008097_m9.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201607031107446_m91.cs" />
-    <Compile Include="Migrations\201607031107446_m91.Designer.cs">
-      <DependentUpon>201607031107446_m91.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201607031108166_m10.cs" />
-    <Compile Include="Migrations\201607031108166_m10.Designer.cs">
-      <DependentUpon>201607031108166_m10.cs</DependentUpon>
+    <Compile Include="Migrations\201607031845522_m1.cs" />
+    <Compile Include="Migrations\201607031845522_m1.Designer.cs">
+      <DependentUpon>201607031845522_m1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -395,6 +351,11 @@
     </Content>
     <Content Include="app\app.component.js.map" />
     <Content Include="app\main.js.map" />
+    <Content Include="Images\10.gif" />
+    <Content Include="Images\100.gif" />
+    <Content Include="Images\150.gif" />
+    <Content Include="Images\25.gif" />
+    <Content Include="Images\50.gif" />
     <Content Include="Images\starRating.png" />
     <Content Include="Images\WhiteStar.gif" />
     <Content Include="Images\YellowStar.gif" />
@@ -532,41 +493,8 @@
     <TypeScriptCompile Include="typings\main\ambient\TypeLite\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201606211143266_InitialCreate.resx">
-      <DependentUpon>201606211143266_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606241405031_m1.resx">
-      <DependentUpon>201606241405031_m1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606241408358_m2.resx">
-      <DependentUpon>201606241408358_m2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606282055089_m3.resx">
-      <DependentUpon>201606282055089_m3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606291437162_m4.resx">
-      <DependentUpon>201606291437162_m4.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606291528586_m5.resx">
-      <DependentUpon>201606291528586_m5.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201607011108115_m6.resx">
-      <DependentUpon>201607011108115_m6.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201607011136183_m7.resx">
-      <DependentUpon>201607011136183_m7.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201607011304078_m8.resx">
-      <DependentUpon>201607011304078_m8.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201607012008097_m9.resx">
-      <DependentUpon>201607012008097_m9.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201607031107446_m91.resx">
-      <DependentUpon>201607031107446_m91.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201607031108166_m10.resx">
-      <DependentUpon>201607031108166_m10.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201607031845522_m1.resx">
+      <DependentUpon>201607031845522_m1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Resource.en.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

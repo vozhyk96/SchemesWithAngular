@@ -29,7 +29,65 @@
         padding: 10px; /* Поля */
         word-wrap: break-word;
     }
+    
 </style>
+@{ int posts = Repository.GetNumberOfPosts(Model.post.UserId);
+    if ((posts == 10) || (posts == 25) || (posts == 50) || (posts == 100) || (posts == 150))
+    {
+        string text = String.Format("Вы получили медаль за добавление {0} схем на данный сайт! Поздравляем))) Что бы посмотреть все полученные медали зайдите на свою страницу!", posts);
+        if (posts == 10)
+        {
+            <p>
+                <a>
+                    <img src="~/Images/10.gif"
+                         width="20" height="35">
+                </a>
+                @text
+            </p>
+        }
+        if (posts == 25)
+        {
+            <p>
+                <a>
+                    <img src="~/Images/25.gif"
+                         width="20" height="35">
+                </a>
+                @text
+            </p>
+        }
+        if (posts == 50)
+        {
+            <p>
+                <a>
+                    <img src="~/Images/50.gif"
+                         width="20" height="35">
+                </a>
+                @text
+            </p>
+        }
+        if (posts == 100)
+        {
+            <p>
+                <a>
+                    <img src="~/Images/100.gif"
+                         width="20" height="35">
+                </a>
+                @text
+            </p>
+        }
+        if (posts == 150)
+        {
+            <p>
+                <a>
+                    <img src="~/Images/150.gif"
+                         width="20" height="35">
+                </a>
+                @text
+            </p>
+        }
+
+    }
+}
 
 <div class="row">
     <hr>

@@ -10,7 +10,6 @@ namespace Angular2Mvc5Application3.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "Schemes.Models.ApplicationDbContext";
         }
 
         protected override void Seed(Schemes.Models.ApplicationDbContext context)

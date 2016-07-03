@@ -64,11 +64,30 @@ namespace Schemes
                 db.SaveChanges();
                 int id = post.id;
                 AddTags(post.tags, post.id);
+                AddToPosts(post.UserId);
                 return id;
             }
         }
 
-        
+        static public void AddToPosts(string UserId)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+
+                ApplicationUser user = db.Users.Find(UserId);
+                user.publicedPosts++;
+                db.SaveChanges();
+            }
+        }
+
+        static public int GetNumberOfPosts(string UserId)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                ApplicationUser user = db.Users.Find(UserId);
+                return user.publicedPosts;
+            }
+        }
 
         static public void UpdatePost(Post post)
         {

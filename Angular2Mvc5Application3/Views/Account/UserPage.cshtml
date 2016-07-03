@@ -121,6 +121,64 @@
 </div>
 <hr>
 
+@{ int posts = Repository.GetNumberOfPosts(Model.id);
+    if (posts >= 10)
+    {
+        <p>
+            <a>
+                <img src="~/Images/10.gif"
+                     width="20" height="35">
+            </a>
+            Это медаль за добавление 10 схем на данный сайт! Поздравляем)))
+        </p>
+        <br />
+    }
+    if (posts >= 25)
+    {
+        <p>
+            <a>
+                <img src="~/Images/25.gif"
+                     width="20" height="35">
+            </a>
+            Это медаль за добавление 25 схем на данный сайт! Поздравляем)))
+        </p>
+        <br />
+    }
+    if (posts >= 50)
+    {
+        <p>
+            <a>
+                <img src="~/Images/50.gif"
+                     width="20" height="35">
+            </a>
+            Это медаль за добавление 50 схем на данный сайт! Поздравляем)))
+        </p>
+        <br />
+    }
+    if (posts >= 100)
+    {
+        <p>
+            <a>
+                <img src="~/Images/100.gif"
+                     width="20" height="35">
+            </a>
+            Это медаль за добавление 100 схем на данный сайт! Поздравляем)))
+        </p>
+        <br />
+    }
+    if (posts >= 150)
+    {
+        <p>
+            <a>
+                <img src="~/Images/150.gif"
+                     width="20" height="35">
+            </a>
+            Это медаль за добавление 150 схем на данный сайт! Поздравляем)))
+        </p>
+        <br />
+    }
+}
+
 <div align="center"><h2>@Resources.Resource.UserPosts</h2></div>
 
 @foreach (ViewPost post in Model.posts)
