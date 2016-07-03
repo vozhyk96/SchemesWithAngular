@@ -178,6 +178,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Изменить схему.
+        /// </summary>
+        public static string ChangeScheme {
+            get {
+                return ResourceManager.GetString("ChangeScheme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Выберите язык.
         /// </summary>
         public static string ChooseLang {
@@ -327,6 +336,15 @@ namespace Resources {
         public static string FormChange {
             get {
                 return ResourceManager.GetString("FormChange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Земля.
+        /// </summary>
+        public static string Ground {
+            get {
+                return ResourceManager.GetString("Ground", resourceCulture);
             }
         }
         
@@ -561,6 +579,15 @@ namespace Resources {
         public static string Search {
             get {
                 return ResourceManager.GetString("Search", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Источник тока.
+        /// </summary>
+        public static string Source {
+            get {
+                return ResourceManager.GetString("Source", resourceCulture);
             }
         }
         

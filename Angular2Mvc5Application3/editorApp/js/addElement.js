@@ -11,7 +11,7 @@ $(document).ready(function () {
 
     /*------- OBJECTS -----------*/
 
-    function newRectangle(x, y) {
+    function newResistor(x, y) {
         var newX = Math.round(x / step) * step;
         var newTop = Math.round(y / step) * step - 50;
 
@@ -25,9 +25,7 @@ $(document).ready(function () {
             });
         }
 
-
         var group = new fabric.Group([
-            //makeRectangle(),
             drawLine([newX - 80, newTop, newX - 40, newTop]), //left connector
             drawLine([newX - 40, newTop - 20, newX - 40, newTop + 20]),  //left vertical
             drawLine([newX + 40, newTop - 20, newX + 40, newTop + 20]), //right vertical
@@ -36,17 +34,26 @@ $(document).ready(function () {
             drawLine([newX + 40, newTop, newX + 80, newTop]) //right connector
         ], {});
         group.setControlsVisibility({
-            mt: false, // middle top disable
-            mb: false, // midle bottom
-            ml: false, // middle left
-            mr: false, // I think you get it
-            br: false, // I think you get it
-            bl: false, // I think you get it
-            tl: false, // I think you get it
-            tr: false // I think you get it
+            mt: false, 
+            mb: false, 
+            ml: false, 
+            mr: false, 
+            br: false, 
+            bl: false, 
+            tl: false,
+            tr: false 
         });
         canvas.add(group);
     }
+
+
+
+
+
+
+
+
+
     function newText(x, y) {
         var newX = Math.round(x / step) * step;
         var newTop = Math.round(y / step) * step - 50;
@@ -64,7 +71,14 @@ $(document).ready(function () {
     }
 
 
-    function newCircle(x, y) {
+
+
+
+
+
+
+
+    function newCapasitor(x, y) {
         var newX = Math.round(x / step) * step;
         var newTop = Math.round(y / step) * step - 50;
 
@@ -86,21 +100,78 @@ $(document).ready(function () {
         ], {});
 
         group.setControlsVisibility({
-            mt: false, // middle top disable
-            mb: false, // midle bottom
-            ml: false, // middle left
-            mr: false, // I think you get it
-            br: false, // I think you get it
-            bl: false, // I think you get it
-            tl: false, // I think you get it
-            tr: false // I think you get it
+            mt: false,
+            mb: false,
+            ml: false,
+            mr: false,
+            br: false,
+            bl: false,
+            tl: false,
+            tr: false
         });
-
-
         canvas.add(group);
     }
 
-    function newEllipse(x, y) {
+
+
+
+
+
+
+
+
+    function newGround(x, y) {
+        var newX = Math.round(x / step) * step;
+        var newTop = Math.round(y / step) * step - 50;
+
+        function drawLine(coords) {
+            return new fabric.Line(coords, {
+                stroke: 'black',
+                strokeWidth: 4,
+                selectable: true,
+                hasControls: false,
+                hasBorders: false
+            });
+        }
+
+        var group = new fabric.Group([
+            drawLine([newX - 60, newTop, newX, newTop]), //left connector
+            drawLine([newX, newTop - 30, newX, newTop + 30]),  //left vertical
+            drawLine([newX + 10, newTop - 20, newX + 10, newTop + 20]),  //left vertical
+            drawLine([newX + 20, newTop - 10, newX + 20, newTop + 10]),  //left vertical
+
+        ], {});
+
+        group.setControlsVisibility({
+            mt: false,
+            mb: false,
+            ml: false,
+            mr: false,
+            br: false,
+            bl: false,
+            tl: false,
+            tr: false
+        });
+        canvas.add(group);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    function newTransistor(x, y) {
         var newX = Math.round(x / step) * step;
         var newTop = Math.round(y / step) * step - 50;
 
@@ -134,20 +205,106 @@ $(document).ready(function () {
             drawLine([newX - 60, newTop, newX, newTop]) //base connector
         ], {});
         group.setControlsVisibility({
-            mt: false, // middle top disable
-            mb: false, // midle bottom
-            ml: false, // middle left
-            mr: false, // I think you get it
-            br: false, // I think you get it
-            bl: false, // I think you get it
-            tl: false, // I think you get it
-            tr: false // I think you get it
+            mt: false,
+            mb: false,
+            ml: false,
+            mr: false,
+            br: false,
+            bl: false,
+            tl: false,
+            tr: false
         });
 
         canvas.add(group);
     }
 
-    function newLine(x, y) {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    function newSource(x, y) {
+        var newX = Math.round(x / step) * step;
+        var newTop = Math.round(y / step) * step - 50;
+
+        function drawLine(coords) {
+            return new fabric.Line(coords, {
+                stroke: 'black',
+                strokeWidth: 4,
+                selectable: true,
+                hasControls: false,
+                hasBorders: false
+            });
+        }
+        function drawCircle() {
+            return new fabric.Circle({
+                left: newX,
+                top: newTop,
+                fill: "rgba(0, 0, 0, 0)",
+                strokeWidth: 4,
+                stroke: 'black',
+                radius: 40
+            });
+        }
+
+        var group = new fabric.Group([
+            drawCircle(), 
+            drawLine([newX - 60, newTop, newX - 40, newTop]), 
+            drawLine([newX + 40, newTop, newX + 60, newTop]), 
+            drawLine([newX - 34, newTop, newX - 20 , newTop]),
+            drawLine([newX + 20, newTop, newX + 34, newTop]),
+            drawLine([newX + 27, newTop -7, newX + 27, newTop +7])
+
+
+
+        ], {});
+        group.setControlsVisibility({
+            mt: false,
+            mb: false,
+            ml: false,
+            mr: false,
+            br: false,
+            bl: false,
+            tl: false,
+            tr: false
+        });
+
+        canvas.add(group);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    function newInduct(x, y) {
         var newX = Math.round(x / step) * step;
         var newTop = Math.round(y / step) * step - 50;
 
@@ -226,10 +383,7 @@ $(document).ready(function () {
             });
         }
 
-
-
         var group = new fabric.Group([
-            //makeRectangle(),
             drawLine([newX - 80, newTop, newX, newTop]), //left connector
             drawCircle1(),
             drawCircle2(),
@@ -239,22 +393,34 @@ $(document).ready(function () {
             drawLine([newX, newTop, newX + 80, newTop]) //right connector
         ], {});
         group.setControlsVisibility({
-            mt: false, // middle top disable
-            mb: false, // midle bottom
-            ml: false, // middle left
-            mr: false, // I think you get it
-            br: false, // I think you get it
-            bl: false, // I think you get it
-            tl: false, // I think you get it
-            tr: false // I think you get it
+            mt: false,
+            mb: false,
+            ml: false,
+            mr: false,
+            br: false,
+            bl: false,
+            tl: false,
+            tr: false
         });
         canvas.add(group);
-
-
     }
 
 
-    function newArrow(x, y) {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    function newWire(x, y) {
 
         var newX = Math.round(x / step) * step;
         var newTop = Math.round(y / step) * step - 50;
@@ -270,48 +436,32 @@ $(document).ready(function () {
         }
 
         var group = new fabric.Group([
-            //makeRectangle(),
-            drawLine([newX, newTop, newX + 100, newTop]), //
+            drawLine([newX, newTop, newX + 100, newTop]), 
 
         ], {});
         group.setControlsVisibility({
-            mt: false, // middle top disable
-            mb: false, // midle bottom
-            ml: false, // middle left
-            mr: false, // I think you get it
-            br: false, // I think you get it
-            bl: false, // I think you get it
-            tl: false, // I think you get it
-            tr: false // I think you get it
+            mt: false,
+            mb: false,
+            ml: false,
+            mr: false,
+            br: false,
+            bl: false,
+            tl: false,
+            tr: false
         });
         canvas.add(group);
     }
 
 
 
-    function createLine(x, y) {
-        var points = [x, y, x + 1000, y];
-        return new fabric.Line(points, {
-            stroke: 'black',
-            strokeWidth: 4,
-            selectable: true
-        });
-    }
 
 
-    function makeLine(coords) {
-        return new fabric.Line(coords, {
-            stroke: 'black',
-            strokeWidth: 4,
-            selectable: false
-        });
-    }
 
-    /* ---- dodanie obiektu po przycisku----*/
-    var addRectangle = document.getElementById('add-rectangle');
-    addRectangle.onclick = function () {
-        canvas.add(createRectangleInTheMiddle());
-    }
+
+
+
+
+
 
     /* ---- dodanie obiektu Onclick----*/
     canvas.on('mouse:down', function (options) {
@@ -320,20 +470,26 @@ $(document).ready(function () {
         var elem = document.getElementsByClassName("activePen");
         for (var i = 0; i < elem.length; i++) {
             switch (elem[i].id) {
-                case "Hsquare":
-                    newRectangle(options.e.clientX, options.e.clientY);
+                case "HResistor":
+                    newResistor(options.e.clientX, options.e.clientY);
                     break;
-                case "Hcircle":
-                    newCircle(options.e.clientX, options.e.clientY);
+                case "HCapasitor":
+                    newCapasitor(options.e.clientX, options.e.clientY);
                     break;
-                case "Hellipse":
-                    newEllipse(options.e.clientX, options.e.clientY);
+                case "HTransistor":
+                    newTransistor(options.e.clientX, options.e.clientY);
                     break;
-                case "Hline":
-                    newLine(options.e.clientX, options.e.clientY);
+                case "HInduct":
+                    newInduct(options.e.clientX, options.e.clientY);
                     break;
-                case "Harrow":
-                    newArrow(options.e.clientX, options.e.clientY);
+                case "HWire":
+                    newWire(options.e.clientX, options.e.clientY);
+                    break;
+                case "HGround":
+                    newGround(options.e.clientX, options.e.clientY);
+                    break;
+                case "HSource":
+                    newSource(options.e.clientX, options.e.clientY);
                     break;
                 case "Htext":
                     newText(options.e.clientX, options.e.clientY);

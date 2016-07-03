@@ -327,4 +327,13 @@
   <data name="Post" xml:space="preserve">
     <value>Post</value>
   </data>
+  <data name="ChangeScheme" xml:space="preserve">
+    <value>Change scheme</value>
+  </data>
+  <data name="Ground" xml:space="preserve">
+    <value>Ground</value>
+  </data>
+  <data name="Source" xml:space="preserve">
+    <value>Current source</value>
+  </data>
 </root>

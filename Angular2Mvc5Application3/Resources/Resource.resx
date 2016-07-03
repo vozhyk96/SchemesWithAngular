@@ -327,4 +327,13 @@
   <data name="Post" xml:space="preserve">
     <value>Пост</value>
   </data>
+  <data name="ChangeScheme" xml:space="preserve">
+    <value>Изменить схему</value>
+  </data>
+  <data name="Ground" xml:space="preserve">
+    <value>Земля</value>
+  </data>
+  <data name="Source" xml:space="preserve">
+    <value>Источник тока</value>
+  </data>
 </root>
