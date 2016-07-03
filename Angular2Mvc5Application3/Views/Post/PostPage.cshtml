@@ -172,48 +172,6 @@
 
 
 
-<!doctype html>
-<html ng-app="Comments">
-<head>
-    <script src="~/Scripts/angular.js"></script>
-    <script src="~/Scripts/comments.js"></script>
-</head>
-<body>
-    <div ng-controller="CommentsController as todoList">
-        <form ng-submit="postComment()">
-            <input type="text" ng-model="textcomment" size="30"
-                   placeholder="add new comment here" id="Add">
-            <input class="btn-primary" type="submit" value="add">
-        </form>
-
-        <dl class="dl-horizontal">
-            <dd ng-repeat="comment in comments">
-                <div class="thumbnail">
-                    <div class="col">
-                        <dl class="dl-horizontal">
-                            <dd>
-                                {{comment.EmailAutor}}
-                            </dd>
-                            <dd>
-                                {{comment.CommentText}}
-                            </dd>
-                            <dd>
-                                {{comment.time}}
-                            </dd>
-                            <button id="{{comment.id}}" dojotype="dijit.form.Button" onclick="addLike(id)">
-                                {{comment.Likes}}
-                            </button>
-                            
-                        </dl>
-                    </div>
-                </div>
-            </dd>
-
-        </dl>
-        
-        <label text="text" runat="server" />
-    </div>
-</body>
-</html>
+@Html.Partial("Comments")
 
 

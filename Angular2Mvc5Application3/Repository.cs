@@ -281,6 +281,16 @@ namespace Schemes
             }
 
         }
+        static public void DeleteComment(int id)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                Comment comment = db.Comment.Find(id);
+                db.Comment.Remove(comment);
+                db.SaveChanges();
+
+            }
+        }
 
         static public int AddLike(int id, string UserId)
         {

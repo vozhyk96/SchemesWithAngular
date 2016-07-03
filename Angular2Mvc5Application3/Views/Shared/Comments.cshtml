@@ -1,14 +1,72 @@
-﻿
-<link rel="stylesheet" href="~/styles.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
-      integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-<!-- Polyfill(s) for older browsers -->
-<script src="~/node_modules/es6-shim/es6-shim.min.js"></script>
-<script src="~/node_modules/zone.js/dist/zone.js"></script>
-<script src="~/node_modules/reflect-metadata/Reflect.js"></script>
-<script src="~/node_modules/systemjs/dist/system.src.js"></script>
-<script src="~/systemjs.config.js"></script>
-<script>
-      System.import('app').catch(function(err){ console.error(err);  });
-</script>
-<my-app>@Resources.Resource.Loading</my-app>
+﻿@using Microsoft.AspNet.Identity
+
+<!doctype html>
+<html ng-app="Comments">
+<head>
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/comments.js"></script>
+    <link rel="stylesheet" href="~/Content/bootstrap.css" />
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="~/Content/Buttons.css" />
+</head>
+<body>
+    <div ng-controller="CommentsController as todoList">
+        @if (User.Identity.IsAuthenticated)
+        {
+            <form ng-submit="postComment()">
+                <div class="parent">
+                    <div class="child">
+                        <textarea class="form-control col-xs-12" rows="3" type="text" ng-model="textcomment" placeholder="Add new comment here" id="Add"></textarea>
+                    </div>
+                    <div class="child">
+                        <input type="submit" value="Add" class="btn btn-success" />
+                    </div>
+                </div>
+            </form>
+        }
+        <dl class="dl-horizontal">
+            <br \>
+            <br>
+
+            <dd ng-repeat="comment in comments">
+                <div class="thumbnail">
+                    <div class="col">
+                        <dl class="dl-horizontal">
+                            <dd>
+                                {{comment.EmailAutor}}
+                            </dd>
+                            <dd>
+                                {{comment.CommentText}}
+                            </dd>
+                            <dd>
+                                {{comment.time}}
+                            </dd>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <button id="{{comment.id}}" dojotype="dijit.form.Button" onclick="addLike(id)">
+                                    ♥ {{comment.Likes}}
+                                </button>
+                            }
+                            else
+                            {
+                                <span class="label label-default">♥ {{comment.Likes}}</span>
+                            }
+                            @if ((Model.post.UserId == User.Identity.GetUserId()) || (User.IsInRole("admin")))
+                            {
+                                <div align="right">
+                                    <button id="{{comment.id}}" dojotype="dijit.form.Button" onclick="deleteComment(id)">
+                                        ✘
+                                    </button>
+                                </div>
+                            }
+                        </dl>
+                    </div>
+                </div>
+            </dd>
+        </dl>
+        <label text="text" runat="server" />
+    </div>
+
+</body>
+</html>

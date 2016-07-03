@@ -225,7 +225,12 @@ namespace Schemes.Controllers
             return Json(comments, JsonRequestBehavior.AllowGet);
 
         }
-
+        [HttpPost]
+        public JsonResult DeleteComment(int id)
+        {
+            Repository.DeleteComment(id);
+            return Json(JsonRequestBehavior.AllowGet);
+        }
         private int GetPostIdFromUrl(string url)
         {
             string[] a = url.Split('/');
