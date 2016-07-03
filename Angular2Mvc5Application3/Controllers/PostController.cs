@@ -209,9 +209,11 @@ namespace Schemes.Controllers
             return Json(Repository.CommentToViewComment(comment), JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult AddLike(int id)
+        [HttpPost]
+        public JsonResult AddLike(string id)
         {
-            int likes = Repository.AddLike(id);
+            int iid = int.Parse(id);
+            int likes = Repository.AddLike(iid, User.Identity.GetUserId());
             return Json(likes, JsonRequestBehavior.AllowGet);
         }
 

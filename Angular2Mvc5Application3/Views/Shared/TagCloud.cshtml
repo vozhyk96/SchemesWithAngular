@@ -1,5 +1,5 @@
 ﻿@using Schemes.Models.DbModels;
-@{ 
+@{
 
     double[] minRange = new double[6];
     List<Tag> tags = Repository.GetAllTags();
@@ -19,23 +19,24 @@
     }
     else if (tag.Count >= minRange[1])
     {
-        @Html.ActionLink("#" + tag.tagName, "Index", "Home", new { tagId = tag.id }, new { style = "font-size:25px;" })
+        @Html.ActionLink("#" + tag.tagName + "\n", "Index", "Home", new { tagId = tag.id }, new { style = "font-size:27px;" })
     }
     else if (tag.Count >= minRange[2])
     {
-        @Html.ActionLink("#" + tag.tagName, "Index", "Home", new { tagId = tag.id }, new { style = "font-size:20px;" })
+        @Html.ActionLink("#" + tag.tagName, "Index", "Home", new { tagId = tag.id }, new { style = "font-size:25px;" })
     }
     else if (tag.Count >= minRange[3])
     {
-        @Html.ActionLink("#" + tag.tagName, "Index", "Home", new { tagId = tag.id }, new { style = "font-size:15px;" })
+        @Html.ActionLink("#" + tag.tagName, "Index", "Home", new { tagId = tag.id }, new { style = "font-size:20px;" })
     }
     else if (tag.Count >= minRange[4])
     {
-        @Html.ActionLink("#" + tag.tagName, "Index", "Home", new { tagId = tag.id }, new { style = "font-size:10px;" })
+        @Html.ActionLink("#" + tag.tagName + "\n", "Index", "Home", new { tagId = tag.id }, new { style = "font-size:16px;" })
     }
     else if (tag.Count >= minRange[5])
     {
-        @Html.ActionLink("#" + tag.tagName, "Index", "Home", new { tagId = tag.id }, new { style = "font-size:5px;" })
+        @Html.ActionLink("#" + tag.tagName + "\n", "Index", "Home", new { tagId = tag.id }, new { style = "font-size:9px;" })
     }
-    else {@Html.ActionLink("#" + tag.tagName, "Index", "Home", new { tagId = tag.id }, new { style = "font-size:2px;" })}
+    else
+    {@Html.ActionLink("#" + tag.tagName, "Index", "Home", new { tagId = tag.id }, new { style = "font-size:7px;" })}
 }

@@ -14,54 +14,73 @@
             word-wrap: break-word;
         }
     </style>
+    <link rel="stylesheet" type="text/css" href="~/Content/Buttons.css" />
 </head>
 <body>
-    </br>
-    </br>
-    @Html.Partial("TagCloud")
-    @using (Html.BeginForm("Index", "Home"))
-    {
-        <div class="form-group">
-            <input type="hidden" name="sort" value="DateUp" />
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Дата ↑" class="btn btn-default" />
-            </div>
+
+    <div class="parent">
+        <div class="child">
+            @using (Html.BeginForm("Index", "Home"))
+            {
+                <div class="form-group">
+                    <input type="hidden" name="sort" value="DateUp" />
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Дата ↑" class="btn btn-default" />
+                    </div>
+                </div>
+            }
         </div>
-    }
-    @using (Html.BeginForm("Index", "Home"))
-    {
-        <div class="form-group">
-            <input type="hidden" name="sort" value="RateUp" />
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Рейтинг ↑" class="btn btn-default" />
-            </div>
+
+        <div class="child">
+
+            @using (Html.BeginForm("Index", "Home"))
+            {
+                <div class="form-group">
+                    <input type="hidden" name="sort" value="DateDown" />
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Дата ↓" class="btn btn-default" />
+                    </div>
+                </div>
+            }
         </div>
-    }
-    @using (Html.BeginForm("Index", "Home"))
-    {
-        <div class="form-group">
-            <input type="hidden" name="sort" value="DateDown" />
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Дата ↓" class="btn btn-default" />
-            </div>
+        <div class="child">
+            @using (Html.BeginForm("Index", "Home"))
+            {
+                <div class="form-group">
+                    <input type="hidden" name="sort" value="RateUp" />
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Рейтинг ↑" class="btn btn-default" />
+                    </div>
+                </div>
+            }
         </div>
-    }
-    @using (Html.BeginForm("Index", "Home"))
-    {
-        <div class="form-group">
-            <input type="hidden" name="sort" value="RateDown" />
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Рейтинг ↓" class="btn btn-default" />
-            </div>
+        <div class="child">
+            @using (Html.BeginForm("Index", "Home"))
+            {
+                <div class="form-group">
+                    <input type="hidden" name="sort" value="RateDown" />
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Рейтинг ↓" class="btn btn-default" />
+                    </div>
+                </div>
+            }
         </div>
-    }
-        
-       
-        
-    
-    <div id="scrolList">
-        @Html.Partial("Tape")
     </div>
+
+    <div class="row">
+        <div class="col-sm-8">
+            <div id="scrolList">
+                @Html.Partial("Tape")
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="thumbnail">
+                @Html.Partial("TagCloud")
+            </div>
+        </div>
+
+    </div>
+
     <div id="loading"><img src='@Url.Content("~/Content/loading_spinner.gif")'></div>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
@@ -101,7 +120,6 @@ $(function () {
         }
     });
 })
-
     </script>
 </body>
 </html>

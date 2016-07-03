@@ -160,23 +160,6 @@ namespace Schemes
             }
         }
 
-        static public List<ViewPost> FindPostsWithString(string s)
-        {
-            using (ApplicationDbContext db = new ApplicationDbContext())
-            {
-                List<ViewPost> posts = new List<ViewPost>();
-                foreach (Post post in db.Posts)
-                {
-                    ViewPost vpost = new ViewPost(post);
-                    if((post.title.Contains(s))||(post.teme.Contains(s))||(post.tags.Contains(s)||(post.description.Contains(s)||(post.time.ToString().Contains(s))||(vpost.UserEmail.Contains(s)))))
-                    {
-                        posts.Add(new ViewPost(post));
-                    }
-                }
-                return posts;
-            }
-        }
-
         static public void AddScheme(int id, string UserId, byte[] image, string json)
         {
             using (ApplicationDbContext db = new ApplicationDbContext())
@@ -279,15 +262,32 @@ namespace Schemes
 
         }
 
-        static public int AddLike(int id)
+        static public int AddLike(int id, string UserId)
         {
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
                 Comment comment = db.Comment.Find(id);
-                comment.Likes++;
+                if (Liked(comment.LikedUserIds, UserId))
+                {
+                    comment.LikedUserIds = comment.LikedUserIds.Replace(UserId, "");
+                    comment.Likes--;
+                }
+                else
+                {
+                    comment.LikedUserIds = comment.LikedUserIds + UserId + ',';
+                    comment.Likes++;
+                }
                 db.SaveChanges();
                 return comment.Likes;
             }
+        }
+
+        static private bool Liked(string UserIds, string UserId)
+        {
+            string[] Ids = UserIds.Split(',');
+            if (Ids.Contains(UserId))
+                return true;
+            else return false;
         }
 
         static private double GetRaiting(string Model)

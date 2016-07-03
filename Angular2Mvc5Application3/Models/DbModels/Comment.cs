@@ -13,5 +13,6 @@ namespace Schemes.Models.DbModels
         public string CommentText { get; set; }
         public DateTime time { get; set; }
         public int Likes { get; set; }
+        public string LikedUserIds { get; set; }
     }
 }

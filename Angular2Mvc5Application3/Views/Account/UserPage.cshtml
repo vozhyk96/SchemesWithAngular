@@ -3,87 +3,91 @@
     ViewBag.Title = Resources.Resource.UserPage;
 }
 
-
-<div align ="center"><h2>@ViewBag.Title.</h2></div>
+<div align="center"><h2>@ViewBag.Title.</h2></div>
 <style>
     .col {
         width: 700px; /* Ширина блока */
         padding: 10px; /* Поля */
         word-wrap: break-word;
     }
-</style> 
-            <div class="row">
+</style>
+<style>
+    hr {
+        border: none;
+        background-color: gray;
+        height: 1px;
+    }
+</style>
+<div class="row">
+    <hr>
     <div class="col-sm-8">
-
         @if (Model.picture.Image != null)
-        {
+            {
             <td>
                 @Html.Raw(Model.picture.HtmlRaw
                         + Convert.ToBase64String(Model.picture.Image) + "\" />")
             </td>
         }
+        <br>
+
         @using (Html.BeginForm("Create", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
-        {
+            {
             <input type="hidden" name="modelId" value=@Model.id />
-            @Html.ValidationSummary(true)
-            <fieldset>
-                <div class="editor-label">@Resources.Resource.UserAvatar</div>
-                @if (Model.isUser)
+                    @Html.ValidationSummary(true)
+                    <fieldset>
+                        @if (Model.isUser)
                 {
-                    <div class="editor-field">
-                        <input type="file" name="uploadImage" class="btn btn-default" />
-                    </div>
+                            <div class="editor-field">
+                                <input type="file" name="uploadImage" class="btn btn-default" />
+                            </div>
 
-                                <p>
-                                    <div class="form-group">
-                                        <div class="col-md-offset-2 col-md-10">
-                                            <input type="submit" value=@Resources.Resource.Add class="btn btn-default" />
-                                        </div>
+                            <p>
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input type="submit" value=@Resources.Resource.Add class="btn btn-success" />
                                     </div>
+                                </div>
+                            </p>
+                        }
 
-                                </p>
-                }
-                
-
-            </fieldset>
+                    </fieldset>
         }
         @using (Html.BeginForm("Delete", "Account"))
-        {
-            if ((Model.isUser) || (User.IsInRole("admin")))
             {
+                if ((Model.isUser) || (User.IsInRole("admin")))
+                {
                 <div class="form-group">
                     <input type="hidden" name="id" value=@Model.id />
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value=@Resources.Resource.DeleteAvatar class="btn btn-default" />
+                        <input type="submit" value=@Resources.Resource.DeleteAvatar class="btn btn-danger" />
                     </div>
                 </div>
             }
         }
-       
     </div>
+
     <div class="col-sm-4">
         <p class="text-success">@ViewBag.StatusMessage</p>
         <div>
             <h4>@Resources.Resource.PersonalInformation</h4>
-            <hr />
             <dl class="dl-horizontal">
                 @if (Model.isUser)
-                {
-                <dt>@Resources.Resource.Password:</dt>
-                <dd>
-                    [
-                    @if (Model.HasPassword)
-                    {
-                        @Html.ActionLink(Resources.Resource.ChangePassword, "ChangePassword", "Manage")
-                    }
-                    else
-                    {
-                        @Html.ActionLink(Resources.Resource.Create, "SetPassword", "Manage")
-                    }
-                    ]
-                </dd>
+            {
+                    <dt>@Resources.Resource.Password:</dt>
+                    <dd>
+                        [
+                        @if (Model.HasPassword)
+                        {
+                            @Html.ActionLink(Resources.Resource.ChangePassword, "ChangePassword", "Manage")
+                        }
+                        else
+                        {
+                            @Html.ActionLink(Resources.Resource.Create, "SetPassword", "Manage")
+                        }
+                        ]
+                    </dd>
                 }
-                
+
                 <dt>@Resources.Resource.Surname:</dt>
                 <dd>
                     @Model.surname
@@ -97,7 +101,7 @@
                     @Model.patronymic
                 </dd>
             </dl>
-            @if ((Model.isUser)||(User.IsInRole("admin")))
+            @if ((Model.isUser) || (User.IsInRole("admin")))
             {
                 using (Html.BeginForm("ChangeData", "Account", FormMethod.Get))
                 {
@@ -114,43 +118,39 @@
             <br>
         </div>
     </div>
-
 </div>
+<hr>
 
 <div align="center"><h2>@Resources.Resource.UserPosts</h2></div>
 
-
-    @foreach (ViewPost post in Model.posts)
-    { <br>
-                <div class="thumbnail">
-                    <div class="col">
-                        <dl class="dl-horizontal">
-                            <dd>
-                               @if (post.post.title != null)
-                               {
-                                <h3>  @Html.ActionLink(post.post.title, "PostPage", "Post", new { id = post.post.id }, null)  </h3>
-                               }
-                            </dd>
-                            <dd>
-                                Автор:  @Html.ActionLink(post.UserEmail, "UserPage", "Account", new { id = post.post.UserId }, null)
-                            </dd>
-                            <dd>
-                                @post.post.tags
-                            </dd>
-                            <dd>
-                                @post.post.description
-                            </dd>
-                            <div align="right">
-                                <dd>
-                                    @post.post.time
-                                </dd>
-                            </div>
-                        </dl>
-                    </div>
+@foreach (ViewPost post in Model.posts)
+{ <br>
+    <div class="thumbnail">
+        <div class="col">
+            <dl class="dl-horizontal">
+                <dd>
+                    @if (post.post.title != null)
+                    {
+                        <h3>  @Html.ActionLink(post.post.title, "PostPage", "Post", new { id = post.post.id }, null)  </h3>
+                    }
+                </dd>
+                <dd>
+                    Автор:  @Html.ActionLink(post.UserEmail, "UserPage", "Account", new { id = post.post.UserId }, null)
+                </dd>
+                <dd>
+                    @post.post.tags
+                </dd>
+                <dd>
+                    @post.post.description
+                </dd>
+                <div align="right">
+                    <dd>
+                        @post.post.time
+                    </dd>
                 </div>
-    }
-
-
-
+            </dl>
+        </div>
+    </div>
+}
 
 
