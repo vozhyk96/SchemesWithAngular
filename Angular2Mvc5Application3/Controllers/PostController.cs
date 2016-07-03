@@ -210,10 +210,9 @@ namespace Schemes.Controllers
         }
 
         [HttpPost]
-        public JsonResult AddLike(string id)
+        public JsonResult AddLike(int id)
         {
-            int iid = int.Parse(id);
-            int likes = Repository.AddLike(iid, User.Identity.GetUserId());
+            int likes = Repository.AddLike(id, User.Identity.GetUserId());
             return Json(likes, JsonRequestBehavior.AllowGet);
         }
 

@@ -12,5 +12,6 @@ namespace Schemes.Models.ViewModels
         public string EmailAutor { get; set; }
         public string CommentText { get; set; }
         public string time { get; set; }
+        public int Likes { get; set; }
     }
 }

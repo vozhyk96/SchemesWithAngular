@@ -1,10 +1,10 @@
-﻿angular.module('todoApp', [])
-  .controller('TodoListController', ["$scope",function ($scope,$interval) {
-      $scope.todoList = {};
-      $scope.todoList.todos = [];
+﻿angular.module('Comments', [])
+  .controller('CommentsController', ["$scope", function ($scope, $interval) {
+      $scope.textcomment = {};
+      $scope.comments = [];
+      $scope.textcomment = '';
 
       addLike = function (id) {
-          alert(id.toString());
           var Data = new FormData();
           Data.append("id", id)
           $.ajax({
@@ -28,7 +28,7 @@
               data: Data,
               success: function (response) {
                   console.log("reload comments");
-                  $scope.todoList.todos = response
+                  $scope.comments = response
                   $scope.$apply();
               },
 
@@ -40,7 +40,7 @@
 
       $scope.postComment = function () {
           var data = new FormData();
-          data.append("text", $scope.todoList.todoText)
+          data.append("text", $scope.textcomment)
           data.append("url", document.URL)
           $.ajax({
               type: "POST",
@@ -49,12 +49,12 @@
               contentType: false,
               data: data,
               success: function (response) {
-                  $scope.todoList.todos.unshift(response);
+                  $scope.comments.unshift(response);
                   $scope.$apply();
               },
 
           });
-          $scope.todoList.todoText = '';
+          $scope.textcomment = '';
           //
 
       }

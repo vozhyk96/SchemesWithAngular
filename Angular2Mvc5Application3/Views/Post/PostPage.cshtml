@@ -115,36 +115,37 @@
 
 
 <!doctype html>
-<html ng-app="todoApp">
+<html ng-app="Comments">
 <head>
     <script src="~/Scripts/angular.js"></script>
-    <script src="~/Scripts/todo.js"></script>
+    <script src="~/Scripts/comments.js"></script>
 </head>
 <body>
-    <div ng-controller="TodoListController as todoList">
+    <div ng-controller="CommentsController as todoList">
         <form ng-submit="postComment()">
-            <input type="text" ng-model="todoList.todoText" size="30"
+            <input type="text" ng-model="textcomment" size="30"
                    placeholder="add new comment here" id="Add">
             <input class="btn-primary" type="submit" value="add">
         </form>
 
         <dl class="dl-horizontal">
-            <dd ng-repeat="todo in todoList.todos">
+            <dd ng-repeat="comment in comments">
                 <div class="thumbnail">
                     <div class="col">
                         <dl class="dl-horizontal">
                             <dd>
-                                {{todo.EmailAutor}}
+                                {{comment.EmailAutor}}
                             </dd>
                             <dd>
-                                {{todo.CommentText}}
+                                {{comment.CommentText}}
                             </dd>
                             <dd>
-                                {{todo.time}}
+                                {{comment.time}}
                             </dd>
-                            <button id="btnDel" dojotype="dijit.form.Button" onclick="addLike(id)">
-                                {{todo.likes}}
+                            <button id="{{comment.id}}" dojotype="dijit.form.Button" onclick="addLike(id)">
+                                {{comment.Likes}}
                             </button>
+                            
                         </dl>
                     </div>
                 </div>

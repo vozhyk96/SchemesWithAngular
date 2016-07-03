@@ -131,7 +131,8 @@ namespace Schemes.Controllers
                             };
 
                             db.VoteLog.Add(vm);
-
+                            Post post = db.Posts.Find(sch.id);
+                            post.rating = Repository.GetRaiting(post.Votes);
                             db.SaveChanges();
 
                             // keep the school voting flag to stop voting by this member

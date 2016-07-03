@@ -242,6 +242,7 @@ namespace Schemes
             vcomment.PostId = comment.PostId;
             vcomment.EmailAutor = comment.EmailAutor;
             vcomment.CommentText = comment.CommentText;
+            vcomment.Likes = comment.Likes;
             vcomment.time = comment.time.ToString();
             return vcomment;
         }
@@ -269,7 +270,7 @@ namespace Schemes
                 Comment comment = db.Comment.Find(id);
                 if (Liked(comment.LikedUserIds, UserId))
                 {
-                    comment.LikedUserIds = comment.LikedUserIds.Replace(UserId, "");
+                    comment.LikedUserIds = comment.LikedUserIds.Replace(UserId+',', "");
                     comment.Likes--;
                 }
                 else
@@ -284,13 +285,15 @@ namespace Schemes
 
         static private bool Liked(string UserIds, string UserId)
         {
+            if (UserIds == null)
+                return false;
             string[] Ids = UserIds.Split(',');
             if (Ids.Contains(UserId))
                 return true;
             else return false;
         }
 
-        static private double GetRaiting(string Model)
+        static public double GetRaiting(string Model)
         {
             if (Model == null)
                 return 0;
