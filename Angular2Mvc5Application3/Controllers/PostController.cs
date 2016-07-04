@@ -36,6 +36,8 @@ namespace Schemes.Controllers
                 if (temp != null)
                 {
                     post.image = temp.Image;
+                    post.json = temp.json;
+                    
                 }
                 Session["UserId"] = UserId;
                 Session["id"] = null;
@@ -161,10 +163,17 @@ namespace Schemes.Controllers
                 s = Session["PostId"].ToString();
                 id = int.Parse(s);
             }
-            if (id != 0)
+            string UserId = "";
+            Temp temp = null;
+            if (Session["UserId"] != null)
             {
-                json = Repository.GetPostById(id).json;
+                UserId = Session["UserId"].ToString();
+                temp = Repository.GetTemp(UserId);
             }
+            if (id != 0)
+                json = Repository.GetPostById(id).json;
+            else if(temp != null) json = temp.json;
+                
             return Json(json,JsonRequestBehavior.AllowGet);
         }
         

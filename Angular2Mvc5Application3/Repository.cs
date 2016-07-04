@@ -58,6 +58,7 @@ namespace Schemes
         {
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
+                Repository.DeleteTemp(post.UserId);
                 post.tags = post.tags.Insert(0, "#");
                 post.rating = GetRaiting(post.Votes);
                 db.Posts.Add(post);
@@ -225,14 +226,29 @@ namespace Schemes
             }
             return null;
         }
-        static public void DeleteTemp(int id)
+        static public void DeleteTemp(string UserId)
         {
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
-                Temp temp = db.Temp.Find(id);
-                db.Temp.Remove(temp);
-                db.SaveChanges();
+                List<int> tempsid = GetIds(UserId);
+                foreach (var id in tempsid)
+                {
+                    Temp temp = db.Temp.Find(id);
+                    db.Temp.Remove(temp);
+                    db.SaveChanges();
+                }
+                
             }
+        }
+
+        static private List<int> GetIds(string UserId)
+        {
+            List<int> result = new List<int>();
+            using (ApplicationDbContext db = new ApplicationDbContext())
+                foreach (var temp in db.Temp)
+                    if (temp.UserId == UserId)
+                        result.Add(temp.id);
+            return result;
         }
 
         static public Comment AddComment(Comment comment)

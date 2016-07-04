@@ -161,6 +161,7 @@ namespace Schemes.Controllers
             if (tagId != 0)
             {
                 tagposts = Repository.GetPostsOfTag(tagId);
+                Session["ByTags"] = true;
                 return View(tagposts);
             }
             
@@ -177,7 +178,7 @@ namespace Schemes.Controllers
             int maxPages = Repository.GetNumberOfPosts()/pageSize + 1;
             while ((posts.Count < pageSize)&&(page<=maxPages))
             {
-                if (tagposts.Count > 0)
+                if (Session["ByTags"] != null)
                 {
                     posts = tagposts;
                     page = maxPages + 1;
@@ -196,17 +197,5 @@ namespace Schemes.Controllers
             }
             return View(posts);
         }
-
-
-        private List<ViewPost> GetItemsPage(List<ViewPost> posts, int page = 1)
-        {
-            var itemsToSkip = page * pageSize;
-
-            return posts.OrderByDescending(t => t.post.time).Skip(itemsToSkip).
-                Take(pageSize).ToList();
-        }
-
-
-
     }
 }
