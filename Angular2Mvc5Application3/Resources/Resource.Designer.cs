@@ -358,6 +358,33 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Это медаль за добавление.
+        /// </summary>
+        public static string GetMedalP1 {
+            get {
+                return ResourceManager.GetString("GetMedalP1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на схем на данный сайт! .
+        /// </summary>
+        public static string GetMedalP2 {
+            get {
+                return ResourceManager.GetString("GetMedalP2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Поздравляем))) Что бы посмотреть все полученные медали зайдите на свою страницу!.
+        /// </summary>
+        public static string GetMedalP3 {
+            get {
+                return ResourceManager.GetString("GetMedalP3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Земля.
         /// </summary>
         public static string Ground {

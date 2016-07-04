@@ -12,7 +12,11 @@ $(document).ready(function () {
     var height = document.getElementById("canvas").height;
     document.getElementById("canvas").click()
     canvas.setBackgroundColor({ source: src, repeat: 'repeat' }, function () {
+        document.getElementById("canvas").click()
+        canvas.renderAll();
     });
+    
+
     
 
     // create grid
@@ -23,7 +27,7 @@ $(document).ready(function () {
             canvas.loadFromJSON(response);
         },
         error: function () {
-            alert('er');
+            
         }
     });
     canvas.renderAll();

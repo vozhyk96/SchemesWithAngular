@@ -34,7 +34,7 @@
 @{ int posts = Repository.GetNumberOfPosts(Model.post.UserId);
     if ((posts == 10) || (posts == 25) || (posts == 50) || (posts == 100) || (posts == 150))
     {
-        string text = String.Format("Вы получили медаль за добавление {0} схем на данный сайт! Поздравляем))) Что бы посмотреть все полученные медали зайдите на свою страницу!", posts);
+        string text = String.Format("{0} {1} {2} {3}",Resources.Resource.GetMedalP1, posts, Resources.Resource.GetMedalP2, Resources.Resource.GetMedalP3);
         if (posts == 10)
         {
             <p>
@@ -124,9 +124,9 @@
 
 
         @if ((Model.post.UserId == User.Identity.GetUserId()) || (User.IsInRole("admin")))
+        {
+            using (Html.BeginForm("CreatePost", "Post", FormMethod.Get))
             {
-                using (Html.BeginForm("CreatePost", "Post", FormMethod.Get))
-                {
                 <input type="hidden" name="id" value=@Model.post.id />
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
@@ -137,12 +137,17 @@
             <br>
             <br>
 
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input id="ButtonDelete" type="button" value="@Resources.Resource.DeletePost" class="btn btn-danger" onclick="if (confirm(@Resources.Resource.ConfirmText)) location.href='@Url.Action("DeletePost", "Post", new { id = Model.post.id })'" />
+            using (Html.BeginForm("DeletePost", "Post"))
+            {
+                <input type="hidden" name="id" value=@Model.post.id />
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input id="ButtonDelete" type="submit" class="btn btn-default" value="@Resources.Resource.DeletePost" />
+                    </div>
                 </div>
-            </div>
+            }
         }
+
     </div>
     <div class="col-sm-7">
         @if (Model.picture.Image != null)

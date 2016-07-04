@@ -345,4 +345,13 @@
   <data name="AddNewComment" xml:space="preserve">
     <value>Напишите сюда свой комментарий</value>
   </data>
+  <data name="GetMedalP1" xml:space="preserve">
+    <value>Это медаль за добавление</value>
+  </data>
+  <data name="GetMedalP2" xml:space="preserve">
+    <value>схем на данный сайт! </value>
+  </data>
+  <data name="GetMedalP3" xml:space="preserve">
+    <value>Поздравляем))) Что бы посмотреть все полученные медали зайдите на свою страницу!</value>
+  </data>
 </root>

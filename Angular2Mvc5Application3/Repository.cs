@@ -643,9 +643,12 @@ namespace Schemes
 
         static private string ParseTag(string tag)
         {
-            if(tag[tag.Length-1] == ' ')
+            if (tag != "")
             {
-                tag = tag.Substring(0, tag.Length - 1);
+                if (tag[tag.Length - 1] == ' ')
+                {
+                    tag = tag.Substring(0, tag.Length - 1);
+                }
             }
             return tag;
         }

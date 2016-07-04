@@ -3,7 +3,7 @@ $(document).ready(function () {
     var copiedObject;
     var copiedObjects = new Array();
     var canvas = document.getElementById("canvas").fabric;
-
+    
     createListenersKeyboard();
 
     function createListenersKeyboard() {
