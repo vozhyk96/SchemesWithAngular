@@ -188,16 +188,6 @@ namespace Schemes.Controllers
                 {
                     var fileName = Path.GetFileName(pic.FileName);
                     var _ext = Path.GetExtension(pic.FileName);
-
-                    _imgname = Guid.NewGuid().ToString();
-                    var _comPath = Server.MapPath("/Upload/MVC_") + _imgname + _ext;
-                    _imgname = "MVC_" + _imgname + _ext;
-
-                    ViewBag.Msg = _comPath;
-                    var path = _comPath;
-
-                    // Saving Image in Original Mode
-                    pic.SaveAs(path);
                 }
             }
             int id = GetIdFromUrl(url);

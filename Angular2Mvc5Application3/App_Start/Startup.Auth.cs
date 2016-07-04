@@ -10,6 +10,7 @@ using Microsoft.Owin.Security.Twitter;
 using Microsoft.Owin.Security;
 
 
+
 namespace Schemes
 {
     public partial class Startup
@@ -71,8 +72,9 @@ namespace Schemes
             });
 
             app.UseFacebookAuthentication(
-               appId: "1742805072602774",
-               appSecret: "405043df2b345a6b98a3142f3cc9053d");
+               appId: "870014633130666",
+               appSecret: "489de32988b433334553e0e6841962c3");
+
             app.UseVkontakteAuthentication("5502300", "caIRMZqp5thapITKvEjc", "email");
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
