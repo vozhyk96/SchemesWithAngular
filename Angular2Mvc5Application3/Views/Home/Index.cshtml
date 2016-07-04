@@ -13,6 +13,11 @@
             word-wrap: break-word;
         }
     </style>
+    <style>
+        lol {
+            word-wrap: break-word;
+        }
+    </style>
     <link rel="stylesheet" type="text/css" href="~/Content/Buttons.css" />
 </head>
 <body>
@@ -24,7 +29,7 @@
                 <div class="form-group">
                     <input type="hidden" name="sort" value="DateUp" />
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Дата ↑" class="btn btn-default" />
+                        <input type="submit" value="@Resources.Resource.Date ↑" class="btn btn-default" />
                     </div>
                 </div>
             }
@@ -36,7 +41,7 @@
                 <div class="form-group">
                     <input type="hidden" name="sort" value="DateDown" />
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Дата ↓" class="btn btn-default" />
+                        <input type="submit" value="@Resources.Resource.Date ↓" class="btn btn-default" />
                     </div>
                 </div>
             }
@@ -47,7 +52,7 @@
                 <div class="form-group">
                     <input type="hidden" name="sort" value="RateUp" />
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Рейтинг ↑" class="btn btn-default" />
+                        <input type="submit" value="@Resources.Resource.Raiting ↑" class="btn btn-default" />
                     </div>
                 </div>
             }
@@ -58,7 +63,7 @@
                 <div class="form-group">
                     <input type="hidden" name="sort" value="RateDown" />
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Рейтинг ↓" class="btn btn-default" />
+                        <input type="submit" value="@Resources.Resource.Raiting ↓" class="btn btn-default" />
                     </div>
                 </div>
             }
@@ -73,7 +78,9 @@
         </div>
         <div class="col-sm-4">
             <div class="thumbnail">
-                @Html.Partial("TagCloud")
+                <lol>
+                    @Html.Partial("TagCloud")
+                </lol>
             </div>
         </div>
 

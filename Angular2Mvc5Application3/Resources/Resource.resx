@@ -336,4 +336,13 @@
   <data name="Source" xml:space="preserve">
     <value>Источник тока</value>
   </data>
+  <data name="Exit" xml:space="preserve">
+    <value>Выйти</value>
+  </data>
+  <data name="Raiting" xml:space="preserve">
+    <value>Рейтинг</value>
+  </data>
+  <data name="AddNewComment" xml:space="preserve">
+    <value>Напишите сюда свой комментарий</value>
+  </data>
 </root>

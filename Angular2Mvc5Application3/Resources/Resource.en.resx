@@ -336,4 +336,13 @@
   <data name="Source" xml:space="preserve">
     <value>Current source</value>
   </data>
+  <data name="Exit" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="Raiting" xml:space="preserve">
+    <value>Raiting</value>
+  </data>
+  <data name="AddNewComment" xml:space="preserve">
+    <value>Add new comment here</value>
+  </data>
 </root>

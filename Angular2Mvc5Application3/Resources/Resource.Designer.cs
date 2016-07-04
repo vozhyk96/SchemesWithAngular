@@ -70,6 +70,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Напишите сюда свой комментарий.
+        /// </summary>
+        public static string AddNewComment {
+            get {
+                return ResourceManager.GetString("AddNewComment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Добавить пост.
         /// </summary>
         public static string AddPost {
@@ -331,6 +340,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Выйти.
+        /// </summary>
+        public static string Exit {
+            get {
+                return ResourceManager.GetString("Exit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Форма смены пароля.
         /// </summary>
         public static string FormChange {
@@ -516,6 +534,15 @@ namespace Resources {
         public static string Post {
             get {
                 return ResourceManager.GetString("Post", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Рейтинг.
+        /// </summary>
+        public static string Raiting {
+            get {
+                return ResourceManager.GetString("Raiting", resourceCulture);
             }
         }
         
